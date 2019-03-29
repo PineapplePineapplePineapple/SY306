@@ -41,7 +41,7 @@ cursor = conn.cursor() #Create cursor used to run queries
 
 
 
-
+#Coming from signin.html
 if form["newUser"]==False:
     #Authenticate
     query = "SELECT Username,Name,Password FROM USERS WHERE Username=
@@ -50,8 +50,12 @@ if form["newUser"]==False:
     except mysql.connector.Error as err:
     #Create Message Board
 
+
+#Coming from signup.html
 elif form["newUser"]==True:
     #Validate input
+
+
     #Insert into Users Table
     query = "Insert into USERS(Username,Name,Password) values ('" + form(Username) + "','" + form(Name) + "','" + form(Password) + "')"
     try:
