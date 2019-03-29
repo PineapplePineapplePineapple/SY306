@@ -44,18 +44,19 @@ cursor = conn.cursor() #Create cursor used to run queries
 
 if form["newUser"]==False:
     #Authenticate
+    query = "SELECT Username,Name,Password FROM USERS WHERE Username=
+    try:
+        cursor.execute(query)
+    except mysql.connector.Error as err:
     #Create Message Board
 
 elif form["newUser"]==True:
     #Validate input
     #Insert into Users Table
-    query = "Insert into USERS(Username,Name,Password,Role) values ('" + form(Username) + "','" + form(Name) + "','" + form(Password) + "')"
+    query = "Insert into USERS(Username,Name,Password) values ('" + form(Username) + "','" + form(Name) + "','" + form(Password) + "')"
     try:
       cursor.execute(query)
     except mysql.connector.Error as err:
-      #for DEBUG only we'll print the error - we should print some generic message instead for production site
-
-      #If we are going to debug, we need to declare the HTTP Headers and html then exit
       print ('Content-type: text/html')
       print()
       print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
