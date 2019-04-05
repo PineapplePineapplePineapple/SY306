@@ -50,6 +50,7 @@ if form["newUser"]==False:
     try:
         cursor.execute(query,form(Username))
     except mysql.connector.Error as err:
+        pass
     #Create Message Board
 
 
@@ -61,19 +62,11 @@ elif form["newUser"]==True:
     #Insert into Users Table
     query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
     try:
-      cursor.execute(query,form(Username),form(Name),form(password))
+        cursor.execute(query,form(Username),form(Name),form(password))
     except mysql.connector.Error as err:
-      print ('Content-type: text/html')
-      print()
-      print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-      print ('<body>')
-      print ('<p style = "color:red">')
-      print (err)
-      print ('</p>')
-      #close the document
-      print ('</body></html>')
+        pass
     #Create Message Board
 
 else:
-    print("Status: 303 See other"
+    print("Status: 303 See other")
     print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html")
