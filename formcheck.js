@@ -27,19 +27,23 @@ function validateForm() {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
-  var y = document.forms["signupform"]["textarea"].value;
-  // if the textarea contains "<" then go into the if statement
-  if (/</g.test(y) == true) {
-    // replace all < with &lt;
-    var y = y.replace(/</g, "&lt;");
-    // write the updated string to the textarea
-    document.forms["signupform"]["textarea"].value = y;
+}
+
+function validateForm_login() {
+  // make sure username text box isn't empty
+  if (document.forms["signupform"]["username"].value == "") {
+    document.getElementById('usernameerrors').innerHTML="Please fill out Username";
+    return false;
+  }
+  if (document.forms["signupform"]["pswd"].value == "") {
+    document.getElementById('pswderrors').innerHTML="Please fill out Password";
+    return false;
   }
 }
 
 // function for validating just the first/last name textbox onblur
 // and that it gets filled in
-function validatefl_name() {
+function validate_fl_name() {
   // if the textbox is empty return an error message
   if (document.forms["signupform"]["fl_name"].value == "") {
     document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
@@ -88,13 +92,13 @@ function validatePswd() {
   }
 }
 
-function validateTextarea() {
-  var x = document.forms["signupform"]["textarea"].value;
-  // if the textarea contains "<" then go into the if statement
-  if (/</g.test(x) == true) {
-    // replace all < with &lt;
-    var x = x.replace(/</g, "&lt;");
-    // write the updated string to the textarea
-    document.forms["signupform"]["textarea"].value = x;
+function validatePswd_login() {
+  if (document.forms["signupform"]["pswd"].value == "") {
+    document.getElementById('pswderrors').innerHTML="Please fill out Password";
+    return false;
+  }
+  if (document.forms["signupform"]["pswd"].value != "") {
+    document.getElementById('pswderrors').innerHTML="";
+    return true;
   }
 }

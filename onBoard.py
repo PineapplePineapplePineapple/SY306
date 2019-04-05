@@ -12,6 +12,8 @@ import mysql.connector #library for database being used
 from mysql.connector import errorcode #  allows error handling
 import config
 
+cgitb.enable()
+
 # userRegex=re.compile('\d+')
 # nameRegex=re.compile('\d+')
 passwordRegex=re.compile('\d+')
@@ -44,18 +46,26 @@ cursor = conn.cursor() #Create cursor used to run queries
 #CGI START
 
 #Coming from signin.html
-if form["newUser"]==False:
+if form.getvalue("newUser")==False:
     #Authenticate
     query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s"
     try:
         cursor.execute(query,form(Username))
     except mysql.connector.Error as err:
-        pass
+      print ('Content-type: text/html')
+      print()
+      print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+      print ('<body>')
+      print ('<p style = "color:red">')
+      print (err)
+      print ('</p>')
+      #close the document
+      print ('</body></html>')
     #Create Message Board
 
 
 #Coming from signup.html
-elif form["newUser"]==True:
+elif form.getvalue("newUser")==True:
     #Validate input
 
 
@@ -64,9 +74,16 @@ elif form["newUser"]==True:
     try:
         cursor.execute(query,form(Username),form(Name),form(password))
     except mysql.connector.Error as err:
-        pass
+      print ('Content-type: text/html')
+      print()
+      print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+      print ('<body>')
+      print ('<p style = "color:red">')
+      print (err)
+      print ('</p>')
+      #close the document
+      print ('</body></html>')
     #Create Message Board
 
 else:
-    print("Status: 303 See other")
-    print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html")
+      print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
