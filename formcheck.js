@@ -39,7 +39,7 @@ function validateForm() {
 
 // function for validating just the first/last name textbox onblur
 // and that it gets filled in
-function validatefl_name() {
+function validate_fl_name() {
   // if the textbox is empty return an error message
   if (document.forms["signupform"]["fl_name"].value == "") {
     document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
