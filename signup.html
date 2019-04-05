@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="acme.css">
 <script src="formcheck.js?new"></script>
 <style>
-.errors {
+.validation_error {
   color: yellow;
 }
 </style>
@@ -19,23 +19,23 @@
   <h1 class="center-align">Create an account!</h1>
 
   <div class="row">
-   <form class="col s12" onsubmit="return validateForm()" action="onBoard.py">
+   <form class="col s12" name="signupform" onsubmit="return validateForm()" action="onBoard.py">
      <div class="row">
        <div class="input-field col s6">
          <input placeholder="Your name.." id="fl_name" type="text" class="validate" onblur="validate_fl_name()">
-         <div class="errors" id="fl_name_errors"></div>
+         <div class="validation_error" id="fl_name_errors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s6">
          <input id="username" type="text" placeholder="Your username.." class="validate" onblur="validateUsername()">
-         <div class="errors" id="usernameerrors"></div>
+         <div class="validation_error" id="usernameerrors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s6">
          <input id="pswd" type="password" placeholder="Your password.." class="validate" onblur="validatePswd()">
-         <div class="errors" id="pswderrors"></div>
+         <div class="validation_error" id="pswderrors"></div>
        </div>
      </div>
    </form>
