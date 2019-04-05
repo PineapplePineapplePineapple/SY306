@@ -8,11 +8,7 @@
 <title>ACME Message Board</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" type="text/css" href="acme.css">
-<script src="formcheck.js?new"></script>
 <style>
-.errors {
-  color: yellow;
-}
 </style>
 </head>
 <body>
@@ -20,16 +16,15 @@
   <h1 class ="center-align">Login to your account to access message board!</h1>
 
   <div class="row">
-   <form class="col s6 offset-s4" onsubmit="return validateForm()">
+   <form class="col s6 offset-s3">
      <div class="row">
        <div class="input-field col s8">
-         <input id="username" onblur="return validateUsername()" placeholder="Username.." type="text" class="validate">
-         <div class="errors" id="usernameerrors"></div>
+         <input placeholder="Username" id="username" type="text" class="validate">
        </div>
      </div>
      <div class="row">
        <div class="input-field col s8">
-         <input id="pswd" onblur="return validatePswd()" placeholder="Password.." type="password" class="validate">
+         <input placeholder="Password" id="password" type="password" class="validate">
        </div>
      </div>
    </form>

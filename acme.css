@@ -1,15 +1,15 @@
 /* label color */
-   .input-field label {
-     color: #000;
+   .input-field input[placeholder] {
+     color: #000000;
    }
    /* label focus color */
    .input-field input[type=text]:focus + label {
-     color: #000;
+     color: #000000;
    }
    /* label underline focus color */
    .input-field input[type=text]:focus {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
+     border-bottom: 1px solid #000000;
+     box-shadow: 0 1px 0 0 #000000;
    }
    /* valid color */
    .input-field input[type=text].valid {
@@ -70,7 +70,7 @@ padding-top:0px;
 
 table{
 margin:10px;
-background-color:black;
+background-color:yellow;
 padding:0px;
 text-align:center;
 }
