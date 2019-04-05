@@ -1,0 +1,92 @@
+/* label color */
+   .input-field label {
+     color: #000;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #000;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #000;
+   }
+
+body{
+background-color: #c62828;
+font-family: Georgia, "Palatino Linotype", Cambria, Arial;
+font-size: 16px;
+color: white;
+padding-left:0px;
+}
+
+div.Head a:visited{
+color:red;
+}
+
+div.Head a{
+color:#000000;
+}
+
+div.Head{
+background-color: tan;
+text-align:left;
+text-decoration:none;
+border-style: ridge;
+border-color: black;
+border-width: 5px;
+color:black;
+font-weight:normal;
+margin-bottom:0px;
+margin-top:0px;
+margin-right:0px;
+margin-left:0px;
+padding-left:10px;
+width:38%;
+}
+
+div.body{
+margin-left:5px;
+}
+
+hr{
+margin-top:0px;
+padding-top:0px;
+}
+
+table{
+margin:10px;
+background-color:black;
+padding:0px;
+text-align:center;
+}
+
+table a{
+color:yellow;
+}
+table a:visited{
+color:red;
+}
+
+form{
+border-style:inset;
+border-color:yellow;
+background-color:tan;
+padding:10px;
+margin-right:0px;
+text-align:left;
+}
