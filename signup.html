@@ -15,7 +15,7 @@
    <form class="col s12" onsubmit="return validateForm()" action="onBoard.py">
      <div class="row">
        <div class="input-field col s6">
-         <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+         <input placeholder="Your name.." id="first_name" type="text" class="validate" onblur="return validateFLName()">
          <label for="first_name">First Name</label>
        </div>
        <div class="input-field col s6">
@@ -25,13 +25,13 @@
      </div>
      <div class="row">
        <div class="input-field col s6">
-         <input id="password" type="password" class="validate">
+         <input id="password" type="password" placeholder="Your password.." class="validate" onblur="return validatePswd()">
          <label for="password">Password</label>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s6">
-         <input id="username" type="text" class="validate">
+         <input id="username" type="text" placeholder="Your username.." class="validate" onblur="return validateUsername()">
          <label for="username">Username</label>
        </div>
      </div>
