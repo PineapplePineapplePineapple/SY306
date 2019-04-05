@@ -15,21 +15,18 @@
    <form class="col s12" onsubmit="return validateForm()" action="onBoard.py">
      <div class="row">
        <div class="input-field col s6">
-         <label for="fl_name">First & Last Name</label>
          <input placeholder="Your name.." id="fl_name" type="text" class="validate" onblur="return validateFLName()">
          <div class="errors" id="flnameerrors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s6">
-         <label for="username">Username</label>
          <input id="username" type="text" placeholder="Your username.." class="validate" onblur="return validateUsername()">
          <div class="errors" id="usernameerrors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s6">
-         <label for="password">Password</label>
          <input id="password" type="password" placeholder="Your password.." class="validate" onblur="return validatePswd()">
          <div class="errors" id="pswderrors"></div>
        </div>
