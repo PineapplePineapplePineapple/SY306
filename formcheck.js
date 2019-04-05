@@ -29,6 +29,18 @@ function validateForm() {
   }
 }
 
+function validateForm_login() {
+  // make sure username text box isn't empty
+  if (document.forms["signupform"]["username"].value == "") {
+    document.getElementById('usernameerrors').innerHTML="Please fill out Username";
+    //return false;
+  }
+  if (document.forms["signupform"]["pswd"].value == "") {
+    document.getElementById('pswderrors').innerHTML="Please fill out Password";
+    //return false;
+  }
+}
+
 // function for validating just the first/last name textbox onblur
 // and that it gets filled in
 function validate_fl_name() {
@@ -75,6 +87,17 @@ function validatePswd() {
   }
   //check that both password requirements are met to clear error box
   if (x.length > 5 && /\d/.test(x) == true) {
+    document.getElementById('pswderrors').innerHTML="";
+    return true;
+  }
+}
+
+function validatePswd_login() {
+  if (document.forms["signupform"]["pswd"].value == "") {
+    document.getElementById('pswderrors').innerHTML="Please fill out Password";
+    return false;
+  }
+  if (document.forms["signupform"]["pswd"].value != "") {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }

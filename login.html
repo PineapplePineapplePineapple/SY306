@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="acme.css">
 <script src="formcheck.js?new"></script>
 <style>
-.errors {
+.validation_error {
   color: yellow;
 }
 </style>
@@ -20,16 +20,17 @@
   <h1 class ="center-align">Login to your account to access message board!</h1>
 
   <div class="row">
-   <form class="col s6 offset-s4" onsubmit="return validateForm()">
+   <form class="col s6 offset-s4" name="signupform" onsubmit="validateForm_login()">
      <div class="row">
        <div class="input-field col s8">
-         <input id="username" onblur="return validateUsername()" placeholder="Username.." type="text" class="validate">
-         <div class="errors" id="usernameerrors"></div>
+         <input id="username" onblur="validateUsername()" placeholder="Username.." type="text" class="validate">
+         <div class="validation_error" id="usernameerrors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s8">
-         <input id="pswd" onblur="return validatePswd()" placeholder="Password.." type="password" class="validate">
+         <input id="pswd" onblur="validatePswd_login()" placeholder="Password.." type="password" class="validate">
+         <div class="validation_error" id="pswderrors"></div>
        </div>
      </div>
    </form>
