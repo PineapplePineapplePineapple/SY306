@@ -46,9 +46,9 @@ cursor = conn.cursor() #Create cursor used to run queries
 #Coming from signin.html
 if form["newUser"]==False:
     #Authenticate
-    query = "SELECT Username,Name,Password FROM USERS WHERE Username=
+    query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s"
     try:
-        cursor.execute(query)
+        cursor.execute(query,form(Username))
     except mysql.connector.Error as err:
     #Create Message Board
 
@@ -76,4 +76,4 @@ elif form["newUser"]==True:
 
 else:
     print("Status: 303 See other"
-    print("Location: http://lalala.com/themainpage")
+    print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html")
