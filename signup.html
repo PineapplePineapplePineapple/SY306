@@ -22,19 +22,19 @@
    <form class="col s12" onsubmit="return validateForm()" action="onBoard.py">
      <div class="row">
        <div class="input-field col s6">
-         <input placeholder="Your name.." id="fl_name" type="text" class="validate" onblur="return validateFLName()">
+         <input placeholder="Your name.." id="fl_name" type="text" class="validate" onblur="validate_fl_name()">
          <div class="errors" id="fl_name_errors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s6">
-         <input id="username" type="text" placeholder="Your username.." class="validate" onblur="return validateUsername()">
+         <input id="username" type="text" placeholder="Your username.." class="validate" onblur="validateUsername()">
          <div class="errors" id="usernameerrors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s6">
-         <input id="pswd" type="password" placeholder="Your password.." class="validate" onblur="return validatePswd()">
+         <input id="pswd" type="password" placeholder="Your password.." class="validate" onblur="validatePswd()">
          <div class="errors" id="pswderrors"></div>
        </div>
      </div>
