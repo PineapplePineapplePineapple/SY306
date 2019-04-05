@@ -15,15 +15,16 @@
   <h1 class ="center-align">Login to your account to access message board!</h1>
 
   <div class="row">
-   <form class="col s6 offset-s4">
+   <form class="col s6 offset-s4" onsubmit="return validateForm()">
      <div class="row">
        <div class="input-field col s8">
-         <input id="username" placeholder="Username.." type="text" class="validate">
+         <input id="username" onblur="return validateUsername()" placeholder="Username.." type="text" class="validate">
+         <div class="errors" id="usernameerrors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s8">
-         <input id="password" placeholder="Password.." type="password" class="validate">
+         <input id="pswd" onblur="return validatePswd()" placeholder="Password.." type="password" class="validate">
        </div>
      </div>
    </form>
