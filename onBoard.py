@@ -12,6 +12,7 @@ import mysql.connector #library for database being used
 from mysql.connector import errorcode #  allows error handling
 import config
 
+cgitb.enable()
 
 # userRegex=re.compile('\d+')
 # nameRegex=re.compile('\d+')
@@ -85,5 +86,4 @@ elif form.getvalue("newUser")==True:
     #Create Message Board
 
 else:
-    print("Status: 303 See other")
-    print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html")
+      print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
