@@ -41,6 +41,8 @@ cursor = conn.cursor() #Create cursor used to run queries
 
 
 
+#CGI START
+
 #Coming from signin.html
 if form["newUser"]==False:
     #Authenticate
@@ -57,9 +59,9 @@ elif form["newUser"]==True:
 
 
     #Insert into Users Table
-    query = "Insert into USERS(Username,Name,Password) values ('" + form(Username) + "','" + form(Name) + "','" + form(Password) + "')"
+    query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
     try:
-      cursor.execute(query)
+      cursor.execute(query,form(Username),form(Name),form(password))
     except mysql.connector.Error as err:
       print ('Content-type: text/html')
       print()
@@ -70,5 +72,8 @@ elif form["newUser"]==True:
       print ('</p>')
       #close the document
       print ('</body></html>')
-
     #Create Message Board
+
+else:
+    print("Status: 303 See other"
+    print("Location: http://lalala.com/themainpage")
