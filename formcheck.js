@@ -11,15 +11,6 @@ function validateForm() {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
-  // make sure email isn't empty
-  if (document.forms["signupform"]["email"].value == "") {
-    document.getElementById('emailerrors').innerHTML="Please fill out valid email address";
-    return false;
-  }
-  if (document.forms["signupform"]["textarea"].value == "") {
-    document.getElementById('textareaerrors').innerHTML="Please describe your Why in life";
-    return false;
-  }
   var x = document.forms["signupform"]["pswd"].value;
   //if the password is less than length of 6 return error
   if (x.length < 6) {
@@ -43,18 +34,6 @@ function validateForm() {
     var y = y.replace(/</g, "&lt;");
     // write the updated string to the textarea
     document.forms["signupform"]["textarea"].value = y;
-  }
-  var z = document.forms["signupform"]["email"].value;
-  //if the email address doesn't match the requirements of a valid email address
-  // with a minimum of example@example then return an error with valid email addresses
-  if (/[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/.test(z) == false) {
-    document.getElementById('emailerrors').innerHTML="Invalid email: example@cyber.com, example@cyber, example@cyber.com.regex are examples of valid email addresses";
-    return false;
-  }
-  // if the email address is valid then erase the error message
-  if (/[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/.test(z) == true) {
-    document.getElementById('emailerrors').innerHTML="";
-    return true;
   }
 }
 
@@ -117,20 +96,5 @@ function validateTextarea() {
     var x = x.replace(/</g, "&lt;");
     // write the updated string to the textarea
     document.forms["signupform"]["textarea"].value = x;
-  }
-}
-
-function validateEmail() {
-  var x = document.forms["signupform"]["email"].value;
-  //if the email address doesn't match the requirements of a valid email address
-  // with a minimum of example@example then return an error with valid email addresses
-  if (/[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/.test(x) == false) {
-    document.getElementById('emailerrors').innerHTML="Invalid email: example@cyber.com, example@cyber, example@cyber.com.regex are examples of valid email addresses";
-    return false;
-  }
-  // if the email address is valid then erase the error message
-  if (/[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/.test(x) == true) {
-    document.getElementById('emailerrors').innerHTML="";
-    return true;
   }
 }
