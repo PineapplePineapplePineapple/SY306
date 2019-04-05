@@ -68,5 +68,5 @@ elif form["newUser"]==True:
     #Create Message Board
 
 else:
-    print("Status: 303 See other"
+    print("Status: 303 See other")
     print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html")
