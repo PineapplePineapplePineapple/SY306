@@ -2,8 +2,8 @@
 //is filled out correctly based on the requirements
 function validateForm() {
   //make sure first/last name text box isn't empty
-  if (document.forms["signupform"]["flname"].value == "") {
-    document.getElementById('flnameerrors').innerHTML="Please fill out first & last name";
+  if (document.forms["signupform"]["fl_name"].value == "") {
+    document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
     return false;
   }
   // make sure username text box isn't empty
@@ -60,15 +60,15 @@ function validateForm() {
 
 // function for validating just the first/last name textbox onblur
 // and that it gets filled in
-function validateFLName() {
+function validatefl_name() {
   // if the textbox is empty return an error message
-  if (document.forms["signupform"]["flname"].value == "") {
-    document.getElementById('flnameerrors').innerHTML="Please fill out first & last name";
+  if (document.forms["signupform"]["fl_name"].value == "") {
+    document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
     return false;
   }
   // if textbox is not empty erase the error message
-  if (document.forms["signupform"]["flname"].value != "") {
-    document.getElementById('flnameerrors').innerHTML="";
+  if (document.forms["signupform"]["fl_name"].value != "") {
+    document.getElementById('fl_name_errors').innerHTML="";
     return true;
   }
 }
