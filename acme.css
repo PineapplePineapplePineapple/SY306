@@ -1,15 +1,15 @@
 /* label color */
-   .input-field input[placeholder] {
-     color: #000000;
+   .input-field {
+     color: #c62828;
    }
    /* label focus color */
-   .input-field input[type=text]:focus + label {
-     color: #000000;
+   .input-field input[type=password]:focus + label {
+     color: #c62828;
    }
    /* label underline focus color */
    .input-field input[type=text]:focus {
-     border-bottom: 1px solid #000000;
-     box-shadow: 0 1px 0 0 #000000;
+     border-bottom: 1px solid #c62828;
+     box-shadow: 0 1px 0 0 #c62828;
    }
    /* valid color */
    .input-field input[type=text].valid {
