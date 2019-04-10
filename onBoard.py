@@ -30,6 +30,19 @@ try:
 except mysql.connector.Error as err:
   #If we have an error connecting to the database we would like to output this fact.
   #This requires that we output the HTTP headers and some HTML.
+  print ('Content-type: text/html')
+  print()
+  print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+  print ('<body>')
+  print ('<p style = "color:red">')
+  print (err)
+  print ('</p>')
+  #close the document
+  print (results)
+
+
+
+
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")
   elif err.errno == errorcode.ER_BAD_DB_ERROR:
@@ -37,6 +50,7 @@ except mysql.connector.Error as err:
   else:
     print(err)
   print("<p>Fix your code or Contact the system admin</p></body></html>")
+  print ('</body></html>')
   quit()
 
 cursor = conn.cursor() #Create cursor used to run queries
