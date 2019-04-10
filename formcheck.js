@@ -67,6 +67,8 @@ function validateForm_login() {
   }
   var y = document.forms["signupform"]["username"].value;
   var z = document.forms["signupform"]["pswd"].value;
+  escapeHtml(y);
+  escapeHtml(z);
 }
 
 // function for validating just the first/last name textbox onblur
@@ -82,6 +84,8 @@ function validate_fl_name() {
     document.getElementById('fl_name_errors').innerHTML="";
     return true;
   }
+  var x = document.forms["signupform"]["fl_name"].value;
+  escapeHtml(x);
 }
 
 // function for validating just the username textbox onblur
@@ -97,6 +101,8 @@ function validateUsername() {
     document.getElementById('usernameerrors').innerHTML="";
     return true;
   }
+  var y = document.forms["signupform"]["username"].value;
+  escapeHtml(y);
 }
 
 // function for validating just the password textbox onblur
@@ -118,6 +124,8 @@ function validatePswd() {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
+  var z = document.forms["signupform"]["pswd"].value;
+  escapeHtml(z);
 }
 
 function validatePswd_login() {
@@ -129,4 +137,6 @@ function validatePswd_login() {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
+  var z = document.forms["signupform"]["pswd"].value;
+  escapeHtml(z);
 }
