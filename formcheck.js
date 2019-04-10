@@ -27,6 +27,32 @@ function validateForm() {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
+  var x = document.forms["signupform"]["fl_name"].value;
+  var y = document.forms["signupform"]["username"].value;
+  var z = document.forms["signupform"]["pswd"].value;
+  escapeHtml(x);
+  escapeHtml(y);
+  escapeHtml(z);
+  // var x = document.forms["signupform"]["fl_name"].value;
+  // if (/</g.test(x) == true) {
+  //   var x = x.replace(/</g, "&lt;");
+  //   document.forms["signupform"]["fl_name"].value = x;
+  // }
+  // if (/>/g.test(x) == true ) {
+  //   var x = x.replace(/</g, "&lt;");
+  //   document.forms["signupform"]["fl_name"].value = x;
+  // }
+  // var y = document.forms["signupform"]["username"].value;
+  // var z = document.forms["signupform"]["pswd"].value;
+}
+
+function escapeHtml(unsafe) {
+  return unsafe
+       .replace(/&/g, "&amp;")
+       .replace(/</g, "&lt;")
+       .replace(/>/g, "&gt;")
+       .replace(/"/g, "&quot;")
+       .replace(/'/g, "&#039;");
 }
 
 function validateForm_login() {
@@ -39,6 +65,8 @@ function validateForm_login() {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
     return false;
   }
+  var y = document.forms["signupform"]["username"].value;
+  var z = document.forms["signupform"]["pswd"].value;
 }
 
 // function for validating just the first/last name textbox onblur
