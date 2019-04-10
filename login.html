@@ -21,6 +21,7 @@
 
   <div class="row">
    <form class="col s6 offset-s3" name="signupform" onsubmit="validateForm_login()" action="onBoard.py">
+    <input type="hidden" name="newUser" value="False">
      <div class="row">
        <div class="input-field col s8">
          <input id="username" onblur="validateUsername()" placeholder="Username.." type="text" class="validate">

@@ -46,26 +46,37 @@ cursor = conn.cursor() #Create cursor used to run queries
 #CGI START
 
 #Coming from signin.html
-if form.getvalue("newUser")==False:
+if form.getvalue("newUser")=="False":
     #Authenticate
     query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s"
     try:
         cursor.execute(query,form(Username))
+        results = cursor.fetchall()
+        print ('Content-type: text/html')
+        print()
+        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+        print ('<body>')
+        print ('<p style = "color:red">')
+        print (err)
+        print ('</p>')
+        #close the document
+        print (results)
+        print ('</body></html>')
     except mysql.connector.Error as err:
-      print ('Content-type: text/html')
-      print()
-      print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-      print ('<body>')
-      print ('<p style = "color:red">')
-      print (err)
-      print ('</p>')
-      #close the document
-      print ('</body></html>')
+        print ('Content-type: text/html')
+        print()
+        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+        print ('<body>')
+        print ('<p style = "color:red">')
+        print (err)
+        print ('</p>')
+        #close the document
+        print ('</body></html>')
     #Create Message Board
 
 
 #Coming from signup.html
-elif form.getvalue("newUser")==True:
+elif form.getvalue("newUser")=="True":
     #Validate input
 
 
@@ -73,17 +84,28 @@ elif form.getvalue("newUser")==True:
     query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
     try:
         cursor.execute(query,form(Username),form(Name),form(password))
+        results = cursor.fetchall()
+        print ('Content-type: text/html')
+        print()
+        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+        print ('<body>')
+        print ('<p style = "color:red">')
+        print (err)
+        print ('</p>')
+        #close the document
+        print (results)
+        print ('</body></html>')
     except mysql.connector.Error as err:
-      print ('Content-type: text/html')
-      print()
-      print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-      print ('<body>')
-      print ('<p style = "color:red">')
-      print (err)
-      print ('</p>')
-      #close the document
-      print ('</body></html>')
-    #Create Message Board
+        print ('Content-type: text/html')
+        print()
+        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+        print ('<body>')
+        print ('<p style = "color:red">')
+        print (err)
+        print ('</p>')
+        #close the document
+        print ('</body></html>')
+        #Create Message Board
 
 else:
       print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")

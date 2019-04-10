@@ -20,6 +20,7 @@
 
   <div class="row">
    <form name="signupform" class="col s6 offset-s3" onsubmit="return validateForm()" action="onBoard.py">
+     <input type="hidden" name="newUser" value="True">
      <div class="row">
        <div class="input-field col s6">
          <input placeholder="Your name.." id="fl_name" type="text" class="validate" onblur="validate_fl_name()">
