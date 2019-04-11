@@ -140,3 +140,7 @@ function validatePswd_login() {
   var z = document.forms["signupform"]["pswd"].value;
   escapeHtml(z);
 }
+
+function alert() {
+  document.getElementById('usernameerrors').innerHTML="Username already taken";
+}
