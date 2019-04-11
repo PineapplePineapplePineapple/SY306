@@ -62,7 +62,7 @@ cursor = conn.cursor() #Create cursor used to run queries
 #Coming from signin.html
 if form.getvalue("newUser")=="False":
     #Authenticate
-    query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s"
+    query = "SELECT Username,Name,Password FROM USERS WHERE Username='%s'"
     print ('Content-type: text/html')
     print()
     print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
@@ -70,66 +70,54 @@ if form.getvalue("newUser")=="False":
     print ('<p style = "color:red">')
     print ("Welcome back")
     print ('</p>')
-    print ('</body></html>')
 
 
     try:
-        cursor.execute(query,form(Username))
+        cursor.execute(query,form.getvalue("Username"))
         results = cursor.fetchall()
-        print ('Content-type: text/html')
-        print()
-        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-        print ('<body>')
         print ('<p style = "color:red">')
-        print ("Hello newbie")
+        print ("SQL worked")
         print ('</p>')
-        #close the document
+    #     #close the document
         print (results)
-        print ('</body></html>')
     except mysql.connector.Error as err:
-        print ('Content-type: text/html')
-        print()
-        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-        print ('<body>')
         print ('<p style = "color:red">')
         print (err)
         print ('</p>')
-        #close the document
-        print ('</body></html>')
+    #     #close the document
+
     #Create Message Board
 
 
 #Coming from signup.html
 elif form.getvalue("newUser")=="True":
     #Validate input
+    print ('Content-type: text/html')
+    print()
+    print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+    print ('<body>')
+    print ('<p style = "color:red">')
+    print ("hello newbie")
+    print ('</p>')
 
 
     #Insert into Users Table
     query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
     try:
-        cursor.execute(query,form(Username),form(Name),form(Password))
+        cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
         results = cursor.fetchall()
-        print ('Content-type: text/html')
-        print()
-        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-        print ('<body>')
         print ('<p style = "color:red">')
-        print (err)
-        print ('</p>')
-        #close the document
-        print (results)
-        print ('</body></html>')
+        print('inserted into database (hopefully)')
+        print('</p>')
+    #     print ('</body></html>')
     except mysql.connector.Error as err:
-        print ('Content-type: text/html')
-        print()
-        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-        print ('<body>')
         print ('<p style = "color:red">')
         print (err)
         print ('</p>')
-        #close the document
-        print ('</body></html>')
-        #Create Message Board
+    #     #close the document
+    #     #Create Message Board
 
 else:
       print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
+
+print ('</body></html>')
