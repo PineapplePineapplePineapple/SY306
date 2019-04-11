@@ -63,6 +63,16 @@ cursor = conn.cursor() #Create cursor used to run queries
 if form.getvalue("newUser")=="False":
     #Authenticate
     query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s"
+    print ('Content-type: text/html')
+    print()
+    print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+    print ('<body>')
+    print ('<p style = "color:red">')
+    print ("Welcome back")
+    print ('</p>')
+    print ('</body></html>')
+
+
     try:
         cursor.execute(query,form(Username))
         results = cursor.fetchall()
@@ -71,7 +81,7 @@ if form.getvalue("newUser")=="False":
         print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
         print ('<body>')
         print ('<p style = "color:red">')
-        print (err)
+        print ("Hello newbie")
         print ('</p>')
         #close the document
         print (results)
@@ -97,7 +107,7 @@ elif form.getvalue("newUser")=="True":
     #Insert into Users Table
     query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
     try:
-        cursor.execute(query,form(Username),form(Name),form(password))
+        cursor.execute(query,form(Username),form(Name),form(Password))
         results = cursor.fetchall()
         print ('Content-type: text/html')
         print()
