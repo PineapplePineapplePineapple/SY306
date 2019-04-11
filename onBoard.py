@@ -99,29 +99,47 @@ if form.getvalue("newUser")=="False":
 #Coming from signup.html
 elif form.getvalue("newUser")=="True":
     #Validate input
-    print ('Content-type: text/html')
-    print()
-    print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-    print ('<body>')
-    print ('<p style = "color:red">')
-    print ("hello newbie")
-    print ('</p>')
+
 
 
     #Insert into Users Table
     try:
-        query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
-        cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
-        print ('<p style = "color:red">')
-        print('inserted into database (hopefully)')
-        print('</p>')
-        cursor.close() # close cursor when no longer needed to access database
+        query = "SELECT Username FROM USERS WHERE Username=%s;"
+        cursor.execute(query,(form.getvalue("Username"),))
+        results = cursor.fetchall()
+        if results != []:
+            #Username taken
+            print("Location: http://midn.cyber.usna.edu/~m202556/Project/signup.html\n")
 
-        conn.commit() # commit the transaction, all changes will be lost if this line is not run!
+        else:
+            query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
+            cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
+            print ('<p style = "color:red">')
+            print('inserted into database (hopefully)')
+            print('</p>')
+            cursor.close() # close cursor when no longer needed to access database
 
-        conn.close()
+            conn.commit() # commit the transaction, all changes will be lost if this line is not run!
+
+            conn.close()
+
+            print ('Content-type: text/html')
+            print()
+            print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+            print ('<body>')
+            print ('<p style = "color:red">')
+            print ("hello newbie")
+            print ('</p>')
+
+
+
+
     #     print ('</body></html>')
     except mysql.connector.Error as err:
+        print ('Content-type: text/html')
+        print()
+        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+        print ('<body>')
         print ('<p style = "color:red">')
         print (err)
         print ('</p>')
