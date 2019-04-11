@@ -1,6 +1,6 @@
 var oldURL = document.referrer;
 if (oldURL = "http://midn.cyber.usna.edu/~m202556/Project/signup.html") {
-  alert("Username already exists");
+  document.getElementById('usernameerrors').innerHTML="Username already exists";
 }
 
 //the overall function to check and validate on submit that my form
