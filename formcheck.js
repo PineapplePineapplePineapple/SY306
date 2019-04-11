@@ -57,17 +57,17 @@ function escapeHtml(unsafe) {
 
 function validateForm_login() {
   // make sure username text box isn't empty
+  var y = document.forms["signupform"]["username"].value;
   if (document.forms["signupform"]["username"].value == "") {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
+  escapeHtml(y);
+  var z = document.forms["signupform"]["pswd"].value;
   if (document.forms["signupform"]["pswd"].value == "") {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
     return false;
   }
-  var y = document.forms["signupform"]["username"].value;
-  var z = document.forms["signupform"]["pswd"].value;
-  escapeHtml(y);
   escapeHtml(z);
 }
 
