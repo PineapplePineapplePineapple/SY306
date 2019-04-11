@@ -62,7 +62,6 @@ cursor = conn.cursor() #Create cursor used to run queries
 #Coming from signin.html
 if form.getvalue("newUser")=="False":
     #Authenticate
-    query = "SELECT Username,Name,Password FROM USERS WHERE Username='%s'"
     print ('Content-type: text/html')
     print()
     print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
@@ -73,8 +72,16 @@ if form.getvalue("newUser")=="False":
 
 
     try:
-        cursor.execute(query,form.getvalue("Username"))
+        query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s;"
+        cursor.execute(query,(form.getvalue("Username"),))
+        # cursor.execute(query)
+
         results = cursor.fetchall()
+        cursor.close() # close cursor when no longer needed to access database
+
+        conn.commit() # commit the transaction, all changes will be lost if this line is not run!
+
+        conn.close()
         print ('<p style = "color:red">')
         print ("SQL worked")
         print ('</p>')
@@ -102,13 +109,17 @@ elif form.getvalue("newUser")=="True":
 
 
     #Insert into Users Table
-    query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
     try:
+        query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
         cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
-        results = cursor.fetchall()
         print ('<p style = "color:red">')
         print('inserted into database (hopefully)')
         print('</p>')
+        cursor.close() # close cursor when no longer needed to access database
+
+        conn.commit() # commit the transaction, all changes will be lost if this line is not run!
+
+        conn.close()
     #     print ('</body></html>')
     except mysql.connector.Error as err:
         print ('<p style = "color:red">')
