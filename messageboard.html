@@ -7,7 +7,7 @@
   <link rel="icon" href="http://static1.squarespace.com/static/537ffea2e4b011aa8abe92c9/t/550ae1f8e4b01e598aec20dc/1548191522912/">
   <link rel="stylesheet" type="text/css" href="acme.css"/>
 </head>
-<body>	<body>
+<body>
 <p><img src="https://www.freshnessmag.com/.image/t_share/MTM2NzkxNDE2MDE3MjY2Mjcz/the-acme-corporation-poster-by-bob-loukotka-01.jpg" alt = "ACME" width = "100" height = "100" style = "padding-right: 10px; padding-top: 0px; float:left"/></p>
 <div class="Head">
 <h1>ACME Talk</h1>
@@ -17,14 +17,14 @@
 
 </p>
 <br>
-<table border="1">
+<table class="col s6 offset-s3" border="1">
 	<tr>
 		<td>
-			<form action=".py" method="post">
+			<form action="messagePost.py" method="post">
 				<p>
 					<textarea id ="ta" rows="5" cols="50" name="talk"></textarea> <br />
           <label for="ta">Talk anything and everything... </label>
-          <button class="btn waves-effect waves-light #c62828 red darken-3" type="submit" name="action" style="display: block; margin: 0 auto;">Talk
+          <button class="btn waves-effect waves-light #c62828 red darken-3" type="submit" name="insert" style="display: block; margin: 0 auto;">Talk
             <i class="material-icons right">record_voice_over</i>
           </button>
 				</p>
