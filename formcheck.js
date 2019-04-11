@@ -1,3 +1,6 @@
+var oldURL = document.referrer;
+alert(oldURL);
+
 //the overall function to check and validate on submit that my form
 //is filled out correctly based on the requirements
 function validateForm() {
@@ -139,8 +142,4 @@ function validatePswd_login() {
   }
   var z = document.forms["signupform"]["pswd"].value;
   escapeHtml(z);
-}
-
-function alert() {
-  document.getElementById('usernameerrors').innerHTML="Username already taken";
 }
