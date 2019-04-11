@@ -104,37 +104,44 @@ print ("""\
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset = "utf-8">
-<title>DB connection with Python</title>
-<style type = "text/css">
-table, td, th {border:1px solid black}
-</style>
+  <meta charset = "utf-8">
+  <title>ACME Board</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" href="http://static1.squarespace.com/static/537ffea2e4b011aa8abe92c9/t/550ae1f8e4b01e598aec20dc/1548191522912/">
+  <link rel="stylesheet" type="text/css" href="acme.css"/>
 </head>
 <body>
+<p><img src="https://www.freshnessmag.com/.image/t_share/MTM2NzkxNDE2MDE3MjY2Mjcz/the-acme-corporation-poster-by-bob-loukotka-01.jpg" alt = "ACME" width = "100" height = "100" style = "padding-right: 10px; padding-top: 0px; float:left"/></p>
+<div class="Head">
+<h1>ACME Talk</h1>
+</div>
+
+<div class="body">
+
+</p>
+<br>
+<table class="col s6 offset-s3" border="1">
+	<tr>
+		<td>
 """)
-#create the page
-print ("<h1>Favorite songs</h1>")
 
-print ('<form method = "post" action = "songPage.py">')
+print ("""\
+    <form action="messagePost.py" method="post">
+    <p>
+        <textarea id ="ta" rows="5" cols="50" name="talk"></textarea> <br />
+<label for="ta">Talk anything and everything... </label>
+<button class="btn waves-effect waves-light #c62828 red darken-3" type="submit" name="insert" style="display: block; margin: 0 auto;">Talk
+<i class="material-icons right">record_voice_over</i>
+</button>
+    </p>
+""")
 
-#get songs from database by calling the printSongs function in song
 message = song.printMessage(cursor)
 
-#print the table with songs, or "No songs in db message"
 if message:
   print (message)
 else:
-  print ("<h2>No songs in database</h2>")
-
-#print the inputs for getting the artist and title, and a submit button to insert
-print ("""\
-<p>
-<label>Artist: <input type = "text" name = "artist"></label><br>
-<label>Title: <input type = "text" name = "title"></label><br>
-<input type = "submit" name = "insert" value = "Insert song">
-</p>""")
-
-print ("</form>")
+  print ("<h2>No messages yet!</h2>")
 
 #close cursor since we don't use it anymore
 cursor.close()
@@ -146,4 +153,11 @@ cnx.commit()  #this is really important otherwise all changes lost
 cnx.close()
 
 #print end html tags
-print("</body></html>");
+print("""\
+</form>
+</td>
+</tr>
+</table></div>
+</body>
+</html>
+""");
