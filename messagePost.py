@@ -10,7 +10,7 @@ from mysql.connector import errorcode
 import config
 
 try:
-  cnx = mysql.connector.connect(user=config.USER,
+  conn = mysql.connector.connect(user=config.USER,
                                 password = config.PASSWORD,
                                 host = config.HOST,
                                 database=config.DATABASE)
@@ -43,7 +43,7 @@ except mysql.connector.Error as err:
   quit()
 
 #create cursor to send queries
-cursor = cnx.cursor()
+cursor = conn.cursor()
 
 #see if needed to insert data - get parameters from the form
 params = cgi.FieldStorage()
@@ -89,9 +89,9 @@ if insertButton:
   #now need to clean up database cursor, etc
   cursor.close()
   #commit the transaction
-  cnx.commit()  #this is really important otherwise all changes lost
+  conn.commit()  #this is really important otherwise all changes lost
   #close connection
-  cnx.close()
+  conn.close()
   quit()
 
 #If there are not values for the insert then we need to display the database contents.
@@ -147,10 +147,10 @@ else:
 cursor.close()
 
 #commit the transaction
-cnx.commit()  #this is really important otherwise all changes lost
+conn.commit()  #this is really important otherwise all changes lost
 
 #close connection
-cnx.close()
+conn.close()
 
 #print end html tags
 print("""\
