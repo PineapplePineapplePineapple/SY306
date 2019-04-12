@@ -93,7 +93,7 @@ def printMessage(cursor):
   newmessages=""
   for (Username, Content, Time) in cursor:
 
-     newmessages += "<tr><td><span style=\"color:white\">"+str(Time) + "</span><span style=\"color:red\">" + str(Username)+"</span>"+str(Content)+ "</td></tr>\n"
+     newmessages += "<tr><td>"+str(Time) + "</td><td style=\"color:red\">" + str(Username)+"</td><td>"+str(Content)+ "</td></tr>\n"
      nbRows+=1
 
   if nbRows > 0:
@@ -187,7 +187,7 @@ print ("""\
 <br>
 <table class="col s6 offset-s3" border="1">
 	<tr>
-		<td>
+		<td colspan=3>
 """)
 
 print ("""\
