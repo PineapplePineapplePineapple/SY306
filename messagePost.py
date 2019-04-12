@@ -92,8 +92,12 @@ def printMessage(cursor):
 
   newmessages=""
   for (Username, Content, Time) in cursor:
+     if Username==currentSession["Username"]:
+         newmessages += "<tr><td style=\"color:blue\">"+str(Time) + "</td><td style=\"color:blue\">" + str(Username)+"</td><td style=\"color:blue\">"+str(Content)+ "</td><td><a class=\"waves-effect waves-light btn\"><i class=\"material-icons left\">delete</i></a></td></tr>\n"
+     else:
+         newmessages += "<tr><td style=\"color:red\">"+str(Time) + "</td><td style=\"color:red\">" + str(Username)+"</td><td style=\"color:red\">"+str(Content)+ "</td></tr>\n"
 
-     newmessages += "<tr><td style=\"color:red\">"+str(Time) + "</td><td style=\"color:red\">" + str(Username)+"</td><td style=\"color:red\">"+str(Content)+ "</td></tr>\n"
+
      nbRows+=1
 
   if nbRows > 0:
