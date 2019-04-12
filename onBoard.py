@@ -85,6 +85,7 @@ if form.getvalue("newUser")=="False":
             # print ('</p>')
             # print ('<p style = "color:red">')
             # print ("SQL worked")
+            # print(results[0][0])
             # print ('</p>')
             SDict["Username"]=results[0][0]
             session.end(SDict)

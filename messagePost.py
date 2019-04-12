@@ -108,6 +108,7 @@ def printMessage(cursor):
 cursor = conn.cursor()
 #Begin session
 currentSession=session.start()
+username = currentSession["Username"]
 
 #see if needed to insert data - get parameters from the form
 params = cgi.FieldStorage()
@@ -117,7 +118,6 @@ insertButton = params.getvalue("insert")
 if insertButton:
 
   content = params.getvalue("talk")
-  username = currentSession["Username"]
   result = addMessage(cursor, content, username)
   #print either a confirmation message or error message
   if result==1:
@@ -193,13 +193,15 @@ print ("""\
 print ("""\
     <form action="messagePost.py" method="post">
     <p>
-        <textarea id ="ta" rows="5" cols="50" name="talk"></textarea> <br />
+        <textarea id ="ta" rows="10" cols="120" name="talk"></textarea> <br />
 <label for="ta">Talk anything and everything... </label>
 <button class="btn waves-effect waves-light #c62828 red darken-3" type="submit" name="insert" style="display: block; margin: 0 auto;">Talk
 <i class="material-icons right">record_voice_over</i>
 </button>
     </p>
 """)
+
+print(username)
 
 message = printMessage(cursor)
 
