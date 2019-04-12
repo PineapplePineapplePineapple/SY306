@@ -8,7 +8,7 @@ class message:
   def addMessage(cursor, content, time):
 
     #create query statement
-    query = "Insert into messages(content, time) values ('" + content + "','" + time + "')"
+    query = "Insert into MESSAGES(content, time) values ('" + content + "','" + time + "')"
     #execute the query
     try:
       cursor.execute(query)

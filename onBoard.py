@@ -11,6 +11,8 @@ import re
 import mysql.connector #library for database being used
 from mysql.connector import errorcode #  allows error handling
 import config
+#
+import session
 
 cgitb.enable()
 
@@ -75,6 +77,7 @@ if form.getvalue("newUser")=="False":
         query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s AND Password=%s;"
         cursor.execute(query,(form.getvalue("Username"),form.getvalue("Password")))
         results = cursor.fetchall()
+        if (results)
         print ('<p style = "color:red">')
         print ("SQL worked")
         print ('</p>')
@@ -107,6 +110,13 @@ elif form.getvalue("newUser")=="True":
         else:
             query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
             cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
+            print ('Content-type: text/html')
+            print()
+            print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+            print ('<body>')
+            print ('<p style = "color:red">')
+            print ("hello newbie")
+            print ('</p>')
             print ('<p style = "color:red">')
             print('inserted into database (hopefully)')
             print('</p>')
@@ -116,13 +126,6 @@ elif form.getvalue("newUser")=="True":
 
             conn.close()
 
-            print ('Content-type: text/html')
-            print()
-            print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-            print ('<body>')
-            print ('<p style = "color:red">')
-            print ("hello newbie")
-            print ('</p>')
 
 
 
