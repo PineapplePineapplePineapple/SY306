@@ -72,16 +72,9 @@ if form.getvalue("newUser")=="False":
 
 
     try:
-        query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s;"
-        cursor.execute(query,(form.getvalue("Username"),))
-        # cursor.execute(query)
-
+        query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s AND Password=%s;"
+        cursor.execute(query,(form.getvalue("Username"),form.getvalue("Password")))
         results = cursor.fetchall()
-        cursor.close() # close cursor when no longer needed to access database
-
-        conn.commit() # commit the transaction, all changes will be lost if this line is not run!
-
-        conn.close()
         print ('<p style = "color:red">')
         print ("SQL worked")
         print ('</p>')
