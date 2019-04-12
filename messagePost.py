@@ -43,10 +43,10 @@ except mysql.connector.Error as err:
 
 
 
-def addMessage(cursor, content, time):
+def addMessage(cursor, content, username):
 
   #create query statement
-  query = "Insert into MESSAGES(Content, Time) values ('" + content + "','" + time + "')"
+  query = "Insert into MESSAGES(Username, Content) values ('" + username + "','" + content + "')"
   #execute the query
   try:
     cursor.execute(query)
@@ -113,8 +113,8 @@ insertButton = params.getvalue("insert")
 if insertButton:
 
   content = params.getvalue("talk")
-  now = time.strftime('%Y-%m-%d %H-%M-%S')
-  result = addMessage(cursor, content, now)
+  username = 
+  result = addMessage(cursor, content, username)
   #print either a confirmation message or error message
   if result==1:
 
