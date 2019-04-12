@@ -77,7 +77,7 @@ def addMessage(cursor, content, time):
 
 
 def printMessage(cursor):
-  query = "SELECT Username, Content, Time FROM USERS, MESSAGES WHERE USERS.Username = MESSAGES.Username ORDER BY Time"
+  query = "SELECT MESSAGES.Username, Content, Time FROM USERS, MESSAGES WHERE USERS.Username = MESSAGES.Username ORDER BY Time"
   try:
     cursor.execute(query)
   except mysql.connector.Error as err:
