@@ -53,7 +53,7 @@ insertButton = params.getvalue("insert")
 if insertButton:
 
   content = params.getvalue("talk")
-  result = song.addMessage(cursor, content, time)
+  result = message.addMessage(cursor, content, time)
   #print either a confirmation message or error message
   if result==1:
 
@@ -73,7 +73,7 @@ if insertButton:
    <html>
    <head>
    <meta charset = "utf-8">
-   <meta http-equiv="refresh" content="5; url=songPage.py">
+   <meta http-equiv="refresh" content="5; url=song.py">
    <title>DB connection Error</title>
    <style type = "text/css">
    table, td, th {border:1px solid black}
