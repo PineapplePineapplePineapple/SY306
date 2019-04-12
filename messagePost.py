@@ -10,8 +10,6 @@ from mysql.connector import errorcode
 
 import config
 
-now = time.strftime('%Y-%m-%d %H-%M-%S')
-
 try:
   conn = mysql.connector.connect(user=config.USER,
                                 password = config.PASSWORD,
@@ -55,6 +53,7 @@ insertButton = params.getvalue("insert")
 if insertButton:
 
   content = params.getvalue("talk")
+  now = time.strftime('%Y-%m-%d %H-%M-%S')
   result = message.addMessage(cursor, content, now)
   #print either a confirmation message or error message
   if result==1:
