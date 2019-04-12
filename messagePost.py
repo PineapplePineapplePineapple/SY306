@@ -90,6 +90,7 @@ def printMessage(cursor):
 
   nbRows = 0
 
+  newmessages=""
   for (Username, Content, Time) in cursor:
 
      newmessages += "<tr><td><span style=\"color:white\">"+str(Time) + "</span><span style=\"color:red\">" + str(Username)+"</span>"+str(Content)+ "</td></tr>\n"
