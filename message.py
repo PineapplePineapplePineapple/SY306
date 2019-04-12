@@ -5,7 +5,7 @@ class message:
   def __init__(self):
     pass
 
-  def addMessage(cursor, content, time):
+  def addMessage(cursor, content):
 
     #create query statement
     query = "Insert into MESSAGES(Content, Time) values ('" + content + "','" + time + "')"
