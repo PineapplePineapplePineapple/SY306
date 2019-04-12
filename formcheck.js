@@ -22,6 +22,7 @@ if (performance.navigation.type == 1) {
 function validateForm() {
   //make sure first/last name text box isn't empty
   if (document.forms["signupform"]["fl_name"].value == "") {
+    //**********document.getElementById('submit').disabled = true;*****************
     document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
     return false;
   }
@@ -63,15 +64,6 @@ function validateForm() {
   // }
   // var y = document.forms["signupform"]["username"].value;
   // var z = document.forms["signupform"]["pswd"].value;
-}
-
-function escapeHtml(unsafe) {
-  return unsafe
-       .replace(/&/g, "&amp;")
-       .replace(/</g, "&lt;")
-       .replace(/>/g, "&gt;")
-       .replace(/"/g, "&quot;")
-       .replace(/'/g, "&#039;");
 }
 
 function validateForm_login() {
@@ -158,4 +150,14 @@ function validatePswd_login() {
   }
   var z = document.forms["signupform"]["pswd"].value;
   escapeHtml(z);
+}
+
+
+function escapeHtml(unsafe) {
+  return unsafe
+       .replace(/&/g, "&amp;")
+       .replace(/</g, "&lt;")
+       .replace(/>/g, "&gt;")
+       .replace(/"/g, "&quot;")
+       .replace(/'/g, "&#039;");
 }

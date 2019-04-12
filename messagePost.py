@@ -95,7 +95,7 @@ def printMessage(cursor):
      nbRows+=1
 
   if nbRows > 0:
-    return table
+    return newmessages
   else:
     return ""
 
