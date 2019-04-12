@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import cgi,cgitb
+import time
 from message import message
 
 cgitb.enable()
@@ -15,6 +16,7 @@ try:
                                 host = config.HOST,
                                 database=config.DATABASE)
 
+now = time.strftime('%Y-%m-%d %H-%M-%S')
 
 except mysql.connector.Error as err:
   #If we have an error connecting to the database we would like to output this fact.
@@ -53,7 +55,7 @@ insertButton = params.getvalue("insert")
 if insertButton:
 
   content = params.getvalue("talk")
-  result = message.addMessage(cursor, content, time)
+  result = message.addMessage(cursor, content, now)
   #print either a confirmation message or error message
   if result==1:
 
