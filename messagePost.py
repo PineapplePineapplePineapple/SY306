@@ -136,7 +136,7 @@ print ("""\
     </p>
 """)
 
-message = song.printMessage(cursor)
+message = message.printMessage(cursor)
 
 if message:
   print (message)

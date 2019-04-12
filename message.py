@@ -39,7 +39,7 @@ class message:
 
   def printMessage(cursor):
     query = "SELECT Username, Content, Time FROM USERS, MESSAGES, MESSAGES_POSTED WHERE USERS.UID = MESSAGES_POSTED.UID AND MESSAGES.MID = MESSAGES_POSTED.MID ORDER BY Time"
-
+    try:
       cursor.execute(query)
     except mysql.connector.Error as err:
       #for DEBUG only we'll print the error and statement- we should print some generic message instead for production site
