@@ -112,52 +112,52 @@ username = currentSession["Username"]
 
 #see if needed to insert data - get parameters from the form
 params = cgi.FieldStorage()
-insertButton = params.getvalue("insert")
+talk = params.getvalue("talk")
 
 #if insert button was pushed
-if insertButton:
+if talk:
 
   content = params.getvalue("talk")
   result = addMessage(cursor, content, username)
   #print either a confirmation message or error message
-  if result==1:
+  # if result==1:
+  #
+  #   #print('Status: 303 See Other')
+  print('Location: messagePost.py')
+  #   print('Content-type: text/html')
+  #   print()
+  #   #Note, we do not stop execution at this point, there is some clean up to do that
+  #   #is common with the action in the else statement so it follows that.
+  # else:
+  #  #So if we get to this part of the code it means that the insert failed.
+  #  #We need to print HTTP Headers and content.
+  #  print('Content-type: text/html')
+  #  print()
+  # print ("""\
+  # <!DOCTYPE html>
+  # <html>
+  # <head>
+  # <meta charset = "utf-8">
+  # <meta http-equiv="refresh" content="5; url=song.py">
+  # <title>DB connection Error</title>
+  # <style type = "text/css">
+  # table, td, th {border:1px solid black}
+  # </style>
+  # </head>
+  # <body>
+  # """)
+  # print ('<h2>Could not insert the song</h2>')
+    #  #Now we branch depending on the error code encountered.
+    #  if result == 0:
+    #     print ('<p>Sorry, something unexpected happened when we tried to add the song to the database. You will be redirected to the song list shortly.</p>')
 
-    #print('Status: 303 See Other')
-    print('Location: messagePost.py')
-    print('Content-type: text/html')
-    print()
-    #Note, we do not stop execution at this point, there is some clean up to do that
-    #is common with the action in the else statement so it follows that.
-  else:
-   #So if we get to this part of the code it means that the insert failed.
-   #We need to print HTTP Headers and content.
-   print('Content-type: text/html')
-   print()
-   print ("""\
-   <!DOCTYPE html>
-   <html>
-   <head>
-   <meta charset = "utf-8">
-   <meta http-equiv="refresh" content="5; url=song.py">
-   <title>DB connection Error</title>
-   <style type = "text/css">
-   table, td, th {border:1px solid black}
-   </style>
-   </head>
-   <body>
-   """)
-   print ('<h2>Could not insert the song</h2>')
-   #Now we branch depending on the error code encountered.
-   if result == 0:
-      print ('<p>Sorry, something unexpected happened when we tried to add the song to the database. You will be redirected to the song list shortly.</p>')
-
-  #now need to clean up database cursor, etc
-  cursor.close()
-  #commit the transaction
-  conn.commit()  #this is really important otherwise all changes lost
-  #close connection
-  conn.close()
-  quit()
+    #now need to clean up database cursor, etc
+  # cursor.close()
+  #   #commit the transaction
+  # conn.commit()  #this is really important otherwise all changes lost
+  #   #close connection
+  # conn.close()
+  # quit()
 
 #If there are not values for the insert then we need to display the database contents.
 #This can be done without an else statement since if there are values the script terminates.
