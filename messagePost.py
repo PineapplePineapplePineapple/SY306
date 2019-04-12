@@ -57,8 +57,8 @@ if insertButton:
   #print either a confirmation message or error message
   if result==1:
 
-    print('Status: 303 See Other')
-    print('Location: songPage.py')
+    #print('Status: 303 See Other')
+    print('Location: messagePost.py')
     print('Content-type: text/html')
     print()
     #Note, we do not stop execution at this point, there is some clean up to do that
