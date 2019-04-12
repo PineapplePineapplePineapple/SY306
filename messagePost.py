@@ -90,18 +90,18 @@ def printMessage(cursor):
 
   nbRows = 0
 
-  newmessages=""
+  newmessages="<ul class=\"collection with-header\">"
   for (Username, Content, Time) in cursor:
      if Username==currentSession["Username"]:
-         newmessages += "<tr><td style=\"color:blue\">"+str(Time) + "</td><td style=\"color:blue\">" + str(Username)+"</td><td style=\"color:blue\">"+str(Content)+ "</td><td><a class=\"waves-effect waves-light btn\"><i class=\"material-icons left\">delete</i></a></td></tr>\n"
+         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
      else:
-         newmessages += "<tr><td style=\"color:red\">"+str(Time) + "</td><td style=\"color:red\">" + str(Username)+"</td><td style=\"color:red\">"+str(Content)+ "</td></tr>\n"
+         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "</div></li>\n"
 
 
      nbRows+=1
 
   if nbRows > 0:
-    return newmessages
+    return newmessages + "</ul>"
   else:
     return ""
 
@@ -213,9 +213,9 @@ print ("""\
 <i class="material-icons right">record_voice_over</i>
 </button>
     </p>
+</form>
 """)
 
-print(username)
 
 message = printMessage(cursor)
 
@@ -235,7 +235,6 @@ conn.close()
 
 #print end html tags
 print("""\
-</form>
 </td>
 </tr>
 </table></div></div>
