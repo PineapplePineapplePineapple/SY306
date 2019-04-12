@@ -10,13 +10,13 @@ from mysql.connector import errorcode
 
 import config
 
+now = time.strftime('%Y-%m-%d %H-%M-%S')
+
 try:
   conn = mysql.connector.connect(user=config.USER,
                                 password = config.PASSWORD,
                                 host = config.HOST,
                                 database=config.DATABASE)
-
-now = time.strftime('%Y-%m-%d %H-%M-%S')
 
 except mysql.connector.Error as err:
   #If we have an error connecting to the database we would like to output this fact.
