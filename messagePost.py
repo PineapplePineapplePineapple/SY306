@@ -47,10 +47,10 @@ except mysql.connector.Error as err:
 def addMessage(cursor, content, username):
 
   #create query statement
-  query = "Insert into MESSAGES(Username, Content) values ('" + username + "','" + content + "')"
+  query = "Insert into MESSAGES(Username, Content) values (%s,%s)"
   #execute the query
   try:
-    cursor.execute(query)
+    cursor.execute(query,username,content)
   except mysql.connector.Error as err:
 
     #If we are going to debug, we need to declare the HTTP Headers and html then exit
