@@ -1,4 +1,4 @@
-CREATE TABLE USERS (UID int NOT NULL AUTO_INCREMENT, Username varchar(20) NOT NULL, Name varchar(50) NOT NULL,
+CREATE TABLE USERS (Username varchar(20) NOT NULL, Name varchar(50) NOT NULL,
 Password varchar(30) NOT NULL, Role varchar(7) NOT NULL DEFAULT 'regular', PRIMARY KEY (Username);
 
 CREATE TABLE MESSAGES (MID int NOT NULL AUTO_INCREMENT, Content varchar(5000) NOT NULL, Username varchar(20) NOT NULL,
