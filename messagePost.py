@@ -178,20 +178,30 @@ print ("""\
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" href="http://static1.squarespace.com/static/537ffea2e4b011aa8abe92c9/t/550ae1f8e4b01e598aec20dc/1548191522912/">
   <link rel="stylesheet" type="text/css" href="acme.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 <body>
-<p><img src="https://www.freshnessmag.com/.image/t_share/MTM2NzkxNDE2MDE3MjY2Mjcz/the-acme-corporation-poster-by-bob-loukotka-01.jpg" alt = "ACME" width = "100" height = "100" style = "padding-right: 10px; padding-top: 0px; float:left"/></p>
-<div class="Head">
-<h1>ACME Talk</h1>
+
+<nav class="black">
+<div class="nav-wrapper container">
+  <a href="#" class="brand-logo">ACME</a>
+  <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <li><a href="login.html">Change user</a></li>
+    <li>""" + username + """</li>
+  </ul>
 </div>
+</nav>
+
 
 <div class="body">
+<div class="container z-depth-3">
 
 </p>
 <br>
 <table class="col s6 offset-s3" border="1">
 	<tr>
-		<td colspan=3>
+		<td colspan=4>
 """)
 
 print ("""\
@@ -228,7 +238,7 @@ print("""\
 </form>
 </td>
 </tr>
-</table></div>
+</table></div></div>
 </body>
 </html>
 """);

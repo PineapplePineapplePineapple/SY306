@@ -69,8 +69,7 @@ padding-top:0px;
 }
 
 table{
-margin:10px;
-background-color:yellow;
+background-color:white;
 padding:0px;
 text-align:center;
 }
@@ -83,9 +82,7 @@ color:red;
 }
 
 form{
-border-style:inset;
-border-color:yellow;
-background-color:tan;
+background-color:grey;
 padding:10px;
 margin-right:0px;
 text-align:left;
