@@ -1,8 +1,18 @@
-var oldURL = document.referrer;
-if (oldURL = "http://midn.cyber.usna.edu/~m202556/Project/signup.html") {
-  alert("Username already exists");
-  //document.getElementById('usernameerrors').innerHTML="Username already exists";
+if (performance.navigation.type == 1) {
+  console.info( "This page is reloaded" );
+} else {
+  console.info( "This page is not reloaded");
+  var oldURL = document.referrer;
+  if (oldURL == "http://midn.cyber.usna.edu/~m202556/Project/signup.html" && document.location=="http://midn.cyber.usna.edu/~m202556/Project/signup.html") {
+    alert("Username already exists");
+    document.getElementById('usernameerrors').innerHTML="Username exists";
+    //document.getElementById('usernameerrors').innerHTML="Username already exists";
+  }
 }
+
+
+
+
 
 //the overall function to check and validate on submit that my form
 //is filled out correctly based on the requirements
