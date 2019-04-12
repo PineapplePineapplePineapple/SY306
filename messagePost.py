@@ -8,6 +8,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 import config
+import session
 
 try:
   conn = mysql.connector.connect(user=config.USER,
@@ -104,6 +105,8 @@ def printMessage(cursor):
 
 #create cursor to send queries
 cursor = conn.cursor()
+#Begin session
+currentSession=session.start()
 
 #see if needed to insert data - get parameters from the form
 params = cgi.FieldStorage()
@@ -113,7 +116,7 @@ insertButton = params.getvalue("insert")
 if insertButton:
 
   content = params.getvalue("talk")
-  username = 
+  username = currentSession["Username"]
   result = addMessage(cursor, content, username)
   #print either a confirmation message or error message
   if result==1:
