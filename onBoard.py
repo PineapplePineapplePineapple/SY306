@@ -22,6 +22,10 @@ passwordRegex=re.compile('\d+')
 
 #Form utilities
 form = cgi.FieldStorage()
+
+SDict=session.start()
+
+
 #SQL connection
 try:
     conn = mysql.connector.connect(user=config.USER,
@@ -82,9 +86,11 @@ if form.getvalue("newUser")=="False":
             # print ('<p style = "color:red">')
             # print ("SQL worked")
             # print ('</p>')
+            session.end(SDict)
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/messagePost.py\n")
 
         else:
+            session.end(SDict)
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
     #     #close the document
         print (results)
@@ -110,21 +116,24 @@ elif form.getvalue("newUser")=="True":
         results = cursor.fetchall()
         if results != []:
             #Username taken
+            session.end(SDict)
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/signup.html\n")
 
         else:
             query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
             cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
-            print ('Content-type: text/html')
-            print()
-            print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-            print ('<body>')
-            print ('<p style = "color:red">')
-            print ("hello newbie")
-            print ('</p>')
-            print ('<p style = "color:red">')
-            print('inserted into database (hopefully)')
-            print('</p>')
+            print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
+
+            # print ('Content-type: text/html')
+            # print()
+            # print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+            # print ('<body>')
+            # print ('<p style = "color:red">')
+            # print ("hello newbie")
+            # print ('</p>')
+            # print ('<p style = "color:red">')
+            # print('inserted into database (hopefully)')
+            # print('</p>')
             cursor.close() # close cursor when no longer needed to access database
 
             conn.commit() # commit the transaction, all changes will be lost if this line is not run!
@@ -148,6 +157,7 @@ elif form.getvalue("newUser")=="True":
     #     #Create Message Board
 
 else:
+      session.end(SDict)
       print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
 
 print ('</body></html>')
