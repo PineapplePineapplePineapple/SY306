@@ -77,7 +77,8 @@ if form.getvalue("newUser")=="False":
         query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s AND Password=%s;"
         cursor.execute(query,(form.getvalue("Username"),form.getvalue("Password")))
         results = cursor.fetchall()
-        if (results)
+        if (results == []):
+            pass
         print ('<p style = "color:red">')
         print ("SQL worked")
         print ('</p>')
