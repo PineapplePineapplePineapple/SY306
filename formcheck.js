@@ -8,6 +8,9 @@ if (performance.navigation.type == 1) {
     document.getElementById('usernameerrors').innerHTML="Username exists";
     //document.getElementById('usernameerrors').innerHTML="Username already exists";
   }
+  if (oldURL == "http://midn.cyber.usna.edu/~m202556/Project/login.html" && document.location=="http://midn.cyber.usna.edu/~m202556/Project/login.html") {
+    alert("Invalid credentials");
+  }
 }
 
 

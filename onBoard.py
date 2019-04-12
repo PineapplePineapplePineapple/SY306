@@ -64,24 +64,28 @@ cursor = conn.cursor() #Create cursor used to run queries
 #Coming from signin.html
 if form.getvalue("newUser")=="False":
     #Authenticate
-    print ('Content-type: text/html')
-    print()
-    print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-    print ('<body>')
-    print ('<p style = "color:red">')
-    print ("Welcome back")
-    print ('</p>')
+
 
 
     try:
         query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s AND Password=%s;"
         cursor.execute(query,(form.getvalue("Username"),form.getvalue("Password")))
         results = cursor.fetchall()
-        if (results == []):
-            pass
-        print ('<p style = "color:red">')
-        print ("SQL worked")
-        print ('</p>')
+        if results!=[]:
+            # print ('Content-type: text/html')
+            # print()
+            # print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+            # print ('<body>')
+            # print ('<p style = "color:red">')
+            # print ("Welcome back")
+            # print ('</p>')
+            # print ('<p style = "color:red">')
+            # print ("SQL worked")
+            # print ('</p>')
+            print("Location: http://midn.cyber.usna.edu/~m202556/Project/messagePost.py\n")
+
+        else:
+            print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
     #     #close the document
         print (results)
     except mysql.connector.Error as err:
