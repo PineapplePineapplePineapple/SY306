@@ -88,7 +88,6 @@ if form.getvalue("newUser")=="False":
             # print(results[0][0])
             # print ('</p>')
             SDict["Username"]=results[0][0]
-            SDict["role"]=[0][3]
             session.end(SDict)
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/messagePost.py\n")
 
