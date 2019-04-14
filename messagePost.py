@@ -92,7 +92,7 @@ def printMessage(cursor):
 
   newmessages="<ul class=\"collection with-header\">"
   for (Username, Content, Time) in cursor:
-     if Username==currentSession["Username"]:
+     if (Username==currentSession["Username"] or currentSession["role"]=="admin"):
          newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
      else:
          newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "</div></li>\n"
