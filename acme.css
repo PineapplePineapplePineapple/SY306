@@ -4,26 +4,16 @@
 
 /* label color */
    .input-field {
-     color: #c62828;
+     color: #FFFFFF;
    }
    /* label focus color */
    .input-field input[type=password]:focus + label {
-     color: #c62828;
+     color: #FFFFFF;
    }
    /* label underline focus color */
    .input-field input[type=text]:focus {
-     border-bottom: 1px solid #c62828;
-     box-shadow: 0 1px 0 0 #c62828;
-   }
-   /* valid color */
-   .input-field input[type=text].valid {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
-   }
-   /* invalid color */
-   .input-field input[type=text].invalid {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
+     border-bottom: 1px solid #FFFFFF;
+     box-shadow: 0 1px 0 0 #FFFFFF;
    }
    /* icon prefix focus color */
    .input-field .prefix.active {
@@ -86,7 +76,6 @@ color:red;
 }
 
 form{
-background-color:grey;
 padding:10px;
 margin-right:0px;
 text-align:left;
