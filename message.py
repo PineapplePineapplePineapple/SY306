@@ -1,5 +1,6 @@
 # message.py
-#
+# message.py has the functions addMessage() and printMessage() that are used for our message board in order to add messages to the database and print
+# the messages to the screen in the message board
 # Jacob Harrison
 
 import mysql.connector
@@ -9,6 +10,7 @@ class message:
   def __init__(self):
     pass
 
+#addMessage function adds the messages into the database
   def addMessage(cursor, content):
 
     #create query statement
@@ -40,7 +42,7 @@ class message:
       ##return False
       return 0
 
-
+# printMessage function prints the messages to the message board
   def printMessage(cursor):
     query = "SELECT Username, Content, Time FROM USERS, MESSAGES, MESSAGES_POSTED WHERE USERS.UID = MESSAGES_POSTED.UID AND MESSAGES.MID = MESSAGES_POSTED.MID ORDER BY Time"
     try:

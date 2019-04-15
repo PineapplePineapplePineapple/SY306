@@ -1,5 +1,5 @@
 <!-- signup.html -->
-<!-- -->
+<!-- html layout for our singup page -->
 <!-- Kestrel Kuhne -->
 
 <!DOCTYPE html>
@@ -9,10 +9,13 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="icon" href="http://static1.squarespace.com/static/537ffea2e4b011aa8abe92c9/t/550ae1f8e4b01e598aec20dc/1548191522912/">
 <title>ACME Message Board</title>
+<!-- link to style sheets -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" type="text/css" href="acme.css">
+<!-- link to client side error checking javascript -->
 <script src="formcheck.js?new"></script>
 <style>
+/* if there's an error then print out the text in yellow */
 .validation_error {
   color: yellow;
 }
@@ -23,32 +26,42 @@
   <h1 class="center-align">Create an account!</h1>
 
   <div class="row">
+    <!-- validateForm function called when the submit button is pressed and the data is passed to onBoard.py -->
    <form name="signupform" class="col s6 offset-s3" onsubmit="return validateForm()" action="onBoard.py">
      <input type="hidden" name="newUser" value="True">
      <div class="row">
        <div class="input-field col s6">
+         <!-- make sure first/last name text box has proper input -->
          <input placeholder="Your name.." name="Name" id="fl_name" type="text" class="validate" onblur="validate_fl_name()">
+         <!-- div for error warning to appear if necessary -->
          <div class="validation_error" id="fl_name_errors"></div>
        </div>
        <div class="input-field col s6">
+         <!-- make sure username text box has proper input -->
          <input id="username" name="Username" type="text" placeholder="Your username.." class="validate" onblur="validateUsername()">
+         <!-- div for error warning to appear if necessary -->
          <div class="validation_error" id="usernameerrors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s12">
+         <!-- make sure password text box has proper input -->
          <input id="pswd" name="Password" type="password" placeholder="Your password.." class="validate" onblur="validatePswd()">
+         <!-- div for error warning to appear if necessary -->
          <div class="validation_error" id="pswderrors"></div>
        </div>
      </div>
+     <!-- submit button -->
      <button id="submit" class="btn waves-effect waves-light #c62828 red darken-3" type="submit" name="action" style="display: block; margin: 0 auto;">Submit
        <i class="material-icons right">send</i>
      </button>
+     <!-- reset button -->
      <button class="btn waves-effect waves-light #c62828 red darken-3" type="reset" name="action" style="display: block; margin: 0 auto;">Reset
        <i class="material-icons right">delete</i>
      </button>
    </form>
  </div>
+ <!-- link to login page -- >
  <p class="center-align">Go to <a href="login.html">login page</a> to log in!</p>
 
 

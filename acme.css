@@ -1,5 +1,5 @@
 /* acme.css */
-/*     */
+/* style sheet for all of our pages */
 /* Jacob Harrison */
 
 /* label color */
@@ -20,6 +20,7 @@
      color: #000;
    }
 
+/* the styling for the main body */
 body{
 background-color: #c62828;
 font-family: Georgia, "Palatino Linotype", Cambria, Arial;
@@ -62,6 +63,7 @@ margin-top:0px;
 padding-top:0px;
 }
 
+/* table formatting */
 table{
 background-color:white;
 padding:0px;
@@ -75,6 +77,7 @@ table a:visited{
 color:red;
 }
 
+/* form formatting for our pages */
 form{
 padding:10px;
 margin-right:0px;
