@@ -132,8 +132,7 @@ if talk:
   print('Location: messagePost.py')
 
 if delete:
-    query = "DELETE FROM MESSAGES where MID="+str(delete)
-#   #execute the query
+    query = "SELECT MESSAGES.Username FROM MESSAGES WHERE MID="+str(delete)
     try:
        cursor.execute(query)
     except mysql.connector.Error as err:
@@ -146,6 +145,22 @@ if delete:
         print ('</p>')
         #close the document
         print ('</body></html>')
+    for (Username,) in cursor:
+        if Username==currentSession["Username"] or currentSession["Role"]=="admin":
+            query = "DELETE FROM MESSAGES where MID="+str(delete)
+        #   #execute the query
+            try:
+               cursor.execute(query)
+            except mysql.connector.Error as err:
+                print ('Content-type: text/html')
+                print()
+                print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+                print ('<body>')
+                print ('<p style = "color:red">')
+                print (err)
+                print ('</p>')
+                #close the document
+                print ('</body></html>')
 
 
 
