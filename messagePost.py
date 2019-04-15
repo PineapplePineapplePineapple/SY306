@@ -108,11 +108,9 @@ def printMessage(cursor):
      # if that specific user wrote that message a delete button appears and they can delete their own messages. Admin can
      # delete all messages
      if Username==currentSession["Username"] or currentSession["Role"]=="admin":
-         # a delete button appears if the above parameters in the if statement are met -- we used a variable called del that equals the Message ID if the delete button for that message is clicked on
-         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "<a href=\"messagePost.py?del="+str(MID)+"\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
+         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br><blockquote>"+str(Content)+"</blockquote><br>"+str(Time)+ "<a href=\"messagePost.py?del="+str(MID)+"\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
      else:
-         # no delete button appears and the message board appears as normal
-         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "</div></li>\n"
+         newmessages += "<li class=\" red lighten-5 collection-item\"><div>"+ str(Username)+"<br><blockquote>"+str(Content)+"</blockquote><br>"+str(Time)+ "</div></li>\n"
 
 
      nbRows+=1
@@ -213,8 +211,7 @@ print ("""\
 <div class="nav-wrapper container">
   <a href="#" class="brand-logo">ACME</a>
   <ul id="nav-mobile" class="right hide-on-med-and-down">
-    <li><a href="login.html">Change user</a></li>
-    <li>""" + username + """</li>
+    <li><a href="login.html">Logged in as: <b>""" + username + """</b></a></li>
   </ul>
 </div>
 </nav>
@@ -231,13 +228,18 @@ print ("""\
 """)
 
 print ("""\
-    <form action="messagePost.py" method="post">
-    <p>
-        <textarea id ="ta" rows="10" cols="120" name="talk"></textarea> <br />
-<label for="ta">Talk anything and everything... </label>
-<button class="btn waves-effect waves-light #c62828 red darken-3" type="submit" name="insert" style="display: block; margin: 0 auto;">Talk
-<i class="material-icons right">record_voice_over</i>
-</button>
+  <div class="row">
+    <form action="messagePost.py" method="post" class="col s8 offset-s2">
+      <div class="row">
+        <div class="input-field col s8">
+          <textarea id="ta" name="talk" class="materialize-textarea"></textarea>
+        </div>
+        <button class="btn-floating waves-effect waves-light #c62828 red darken-3" type="submit" name="insert" style="display: block; margin: 0 auto;">
+        <i class="material-icons right">record_voice_over</i>
+        </button>
+      </div>
+    </form>
+  </div>
     </p>
 </form>
 """)
