@@ -109,10 +109,10 @@ def printMessage(cursor):
      # delete all messages
      if Username==currentSession["Username"] or currentSession["Role"]=="admin":
           # a delete button appears if the above parameters in the if statement are met -- we used a variable called del that equals the Message ID if the delete button for that message is clicked on
-         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br><blockquote>"+str(Content)+"</blockquote><br>"+str(Time)+ "<a href=\"messagePost.py?del="+str(MID)+"\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
+         newmessages += "<li class=\"red lighten-5 collection-item\"><div>"+ str(Username)+"<p class=\"flow-text\">"+str(Content)+"</p>"+str(Time)+ "<a href=\"messagePost.py?del="+str(MID)+"\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
      else:
          # if the requirements are not met then no delete button appears
-         newmessages += "<li class=\" right-align collection-item\"><div>"+ str(Username)+"<br><blockquote>"+str(Content)+"</blockquote><br>"+str(Time)+ "</div></li>\n"
+         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "</div></li>\n"
 
 
      nbRows+=1
@@ -222,8 +222,7 @@ print ("""\
 <div class="body">
 <div class="container z-depth-3">
 
-</p>
-<br>
+
 <table class="col s6 offset-s3">
 	<tr>
 		<td>
@@ -242,7 +241,6 @@ print ("""\
       </div>
     </form>
   </div>
-    </p>
 </form>
 """)
 
