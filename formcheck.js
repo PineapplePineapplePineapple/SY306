@@ -1,17 +1,21 @@
 // formcheck.js
-// runs all the client side for
-// Jaocb Harrison
+// runs all the client side validation for the signup, login, and message board
+// Jacob Harrison
 
+// check if the page has been reloaded
 if (performance.navigation.type == 1) {
   console.info( "This page is reloaded" );
 } else {
   console.info( "This page is not reloaded");
+  // see which URL the user just came from
   var oldURL = document.referrer;
+  // the user came from signup.html and is currently in signup.html it means the username is already being used so print out an alert that the username already exists
   if (oldURL == "http://midn.cyber.usna.edu/~m202556/Project/signup.html" && document.location=="http://midn.cyber.usna.edu/~m202556/Project/signup.html") {
     alert("Username already exists");
     document.getElementById('usernameerrors').innerHTML="Username exists";
     //document.getElementById('usernameerrors').innerHTML="Username already exists";
   }
+  // if the user came from login.html and is currently in login.html that means the login credentials were invalid so send an alert saying they were invalid
   if (oldURL == "http://midn.cyber.usna.edu/~m202556/Project/login.html" && document.location=="http://midn.cyber.usna.edu/~m202556/Project/login.html") {
     alert("Invalid credentials");
   }
@@ -21,16 +25,14 @@ if (performance.navigation.type == 1) {
 
 
 
-//the overall function to check and validate on submit that my form
-//is filled out correctly based on the requirements
+//the overall function to check and validate on submit that the form is filled out correctly based on the requirements
 function validateForm() {
   //make sure first/last name text box isn't empty
   if (document.forms["signupform"]["fl_name"].value == "") {
-    //**********document.getElementById('submit').disabled = true;*****************
     document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
     return false;
   }
-  // make sure username text box isn't empty
+  // make sure username text box isn't empty and return error if it is
   if (document.forms["signupform"]["username"].value == "") {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
@@ -41,7 +43,7 @@ function validateForm() {
      document.getElementById('pswderrors').innerHTML="Password must be at least 6 characters";
      return false;
   }
-  //if there's no digit return an error
+  //if there's no digit in the password return an error
   if (/\d/.test(x) == false) {
     document.getElementById('pswderrors').innerHTML="Password must contain at least 1 number";
     return false;
@@ -51,6 +53,7 @@ function validateForm() {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
+  // access first/last name, username, and password and pass them all through the character escaping function
   var x = document.forms["signupform"]["fl_name"].value;
   var y = document.forms["signupform"]["username"].value;
   var z = document.forms["signupform"]["pswd"].value;
@@ -70,6 +73,7 @@ function validateForm() {
   // var z = document.forms["signupform"]["pswd"].value;
 }
 
+// function to validation the login form on submit
 function validateForm_login() {
   // make sure username text box isn't empty
   var y = document.forms["signupform"]["username"].value;
@@ -77,12 +81,15 @@ function validateForm_login() {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
+  // character escape the username text
   escapeHtml(y);
   var z = document.forms["signupform"]["pswd"].value;
+  // make sure password text box isn't empty
   if (document.forms["signupform"]["pswd"].value == "") {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
     return false;
   }
+  // character escape
   escapeHtml(z);
 }
 
@@ -143,11 +150,14 @@ function validatePswd() {
   escapeHtml(z);
 }
 
+// function for validating the password textbox on the login page
 function validatePswd_login() {
+  // make sure text is entered into the password text box
   if (document.forms["signupform"]["pswd"].value == "") {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
     return false;
   }
+  // delete the error if the password thas text typed into it
   if (document.forms["signupform"]["pswd"].value != "") {
     document.getElementById('pswderrors').innerHTML="";
     return true;
@@ -156,7 +166,7 @@ function validatePswd_login() {
   escapeHtml(z);
 }
 
-
+// escape bad characters function
 function escapeHtml(unsafe) {
   return unsafe
        .replace(/&/g, "&amp;")

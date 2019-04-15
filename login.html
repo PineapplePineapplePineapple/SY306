@@ -1,5 +1,5 @@
 <!-- login.html -->
-<!-- -->
+<!-- the html setup for our login page -->
 <!-- Kestrel Kuhne -->
 
 <!DOCTYPE html>
@@ -10,10 +10,12 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="icon" href="http://static1.squarespace.com/static/537ffea2e4b011aa8abe92c9/t/550ae1f8e4b01e598aec20dc/1548191522912/">
 <title>ACME Message Board</title>
+<!-- link to our stylesheets -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet" type="text/css" href="acme.css">
 <script src="formcheck.js?new"></script>
 <style>
+/* if there's an input error the text color is yellow */
 .validation_error {
   color: yellow;
 }
@@ -24,25 +26,33 @@
   <h1 class ="center-align">Login to your account to access the message board!</h1>
 
   <div class="row">
+    <!-- on submit call validateForm_login() function which checks all text fields and pass the data to onBoard.py -->
    <form class="col s6 offset-s3" name="signupform" onsubmit="validateForm_login()" action="onBoard.py">
     <input type="hidden" name="newUser" value="False">
      <div class="row">
        <div class="input-field col s12">
+         <!-- username input with error checking -->
          <input name="Username" id="username" onblur="validateUsername()" placeholder="Username.." type="text" class="validate">
+         <!-- div class for username errors if there is one -->
          <div class="validation_error" id="usernameerrors"></div>
        </div>
      </div>
      <div class="row">
        <div class="input-field col s12">
+         <!-- password input with error checking -->
          <input id="pswd" name="Password" onblur="validatePswd_login()" placeholder="Password.." type="password" class="validate">
+         <!-- div class for password errors if there are any -->
          <div class="validation_error" id="pswderrors"></div>
        </div>
      </div>
      <div class="row center-align">
+      <!-- submit button -->
      <button id="submit" class="btn waves-effect waves-light #c62828 red darken-3" type="submit" name="action" style="display: block; margin: 0 auto;">Sign In
      </button>
+     <!-- Reset button -->
      <button class="btn-flat waves-effect waves-light #c62828" type="Reset" name="action" style="display: block; margin: 0 auto;">Reset
      </button>
+     <!-- link to signup.html if the user doesn't already have an account -->
      <a href="signup.html" class="waves-effect waves-light btn red darken-3">Sign up</a>
    </div>
    </form>

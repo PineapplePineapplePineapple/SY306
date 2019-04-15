@@ -190,7 +190,7 @@ if delete:
 
 
 #First we need our HTTP headers and HTML opening code
-# the HTML format for our message board -- normal styling w/ the ability to sign out in the top right corner by clicking on "change user"
+# the HTML format for our message board -- normal styling w/ the ability to sign out in the top right corner by clicking on your username
 # we name the textarea part of the message board "talk" so that when the user writes a message talk=True and we can
 # run that check to print the messages to the message board
 print ( "Content-type: text/html" )
