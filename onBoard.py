@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #onBoard.py
-#processes credentials from signup/login page
+#processes credentials from signup/login page and directs users to the message board if they Authenticate
 #maintainer: Jacques Henot
 
 #Modules
@@ -12,18 +12,16 @@ import re
 import mysql.connector #library for database being used
 from mysql.connector import errorcode #  allows error handling
 import config
-#
+#Session Modules
 import session
 
 cgitb.enable()
 
-# userRegex=re.compile('\d+')
-# nameRegex=re.compile('\d+')
 passwordRegex=re.compile('\d+')
 
 #Form utilities
 form = cgi.FieldStorage()
-
+#Session Dictionary to be used
 SDict=session.start()
 
 
@@ -35,8 +33,6 @@ try:
                                   database=config.DATABASE)
 
 except mysql.connector.Error as err:
-  #If we have an error connecting to the database we would like to output this fact.
-  #This requires that we output the HTTP headers and some HTML.
   print ('Content-type: text/html')
   print()
   print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
@@ -66,50 +62,39 @@ cursor = conn.cursor() #Create cursor used to run queries
 
 #CGI START
 
-#Coming from signin.html
+#Coming from signin.html###############################################################
 if form.getvalue("newUser")=="False":
     #Authenticate
-
-
-
     try:
         query = "SELECT Username,Name,Password,Role FROM USERS WHERE Username=%s AND Password=%s;"
         cursor.execute(query,(form.getvalue("Username"),form.getvalue("Password")))
         results = cursor.fetchall()
+
+        #Successful login flow
         if results!=[]:
-            # print ('Content-type: text/html')
-            # print()
-            # print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-            # print ('<body>')
-            # print ('<p style = "color:red">')
-            # print ("Welcome back")
-            # print ('</p>')
-            # print ('<p style = "color:red">')
-            # print ("SQL worked")
-            # print(results[0][0])
-            # print ('</p>')
+            #Creates session
             SDict["Username"]=results[0][0]
             SDict["Role"]=results[0][3]
             session.end(SDict)
+            #Direct user to the message board
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/messagePost.py\n")
 
+        #Failed login flow
         else:
+
             session.end(SDict)
+            #refreshed the login page, and triggers the 'invalid credentials' error message
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
-    #     #close the document
-        print (results)
+
     except mysql.connector.Error as err:
         print ('<p style = "color:red">')
         print (err)
         print ('</p>')
-    #     #close the document
-
-    #Create Message Board
+################################################################################################
 
 
-#Coming from signup.html
+#Coming from signup.html########################################################################
 elif form.getvalue("newUser")=="True":
-    #Validate input
 
 
 
@@ -118,29 +103,23 @@ elif form.getvalue("newUser")=="True":
         query = "SELECT Username FROM USERS WHERE Username=%s;"
         cursor.execute(query,(form.getvalue("Username"),))
         results = cursor.fetchall()
+
+        #Verify no existing user with the same username exists
         if results != []:
             #Username taken
             session.end(SDict)
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/signup.html\n")
 
+        #Create user if no such prexisting user exists
         else:
             query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
             cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
+            #Direct the user to login
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
 
-            # print ('Content-type: text/html')
-            # print()
-            # print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
-            # print ('<body>')
-            # print ('<p style = "color:red">')
-            # print ("hello newbie")
-            # print ('</p>')
-            # print ('<p style = "color:red">')
-            # print('inserted into database (hopefully)')
-            # print('</p>')
             cursor.close() # close cursor when no longer needed to access database
 
-            conn.commit() # commit the transaction, all changes will be lost if this line is not run!
+            conn.commit() # commit the transaction
 
             conn.close()
 
@@ -148,7 +127,6 @@ elif form.getvalue("newUser")=="True":
 
 
 
-    #     print ('</body></html>')
     except mysql.connector.Error as err:
         print ('Content-type: text/html')
         print()
@@ -157,11 +135,14 @@ elif form.getvalue("newUser")=="True":
         print ('<p style = "color:red">')
         print (err)
         print ('</p>')
-    #     #close the document
-    #     #Create Message Board
+######################################################################################################
 
+
+
+#Access CGI directly###################################################################################
 else:
       session.end(SDict)
       print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
 
 print ('</body></html>')
+#######################################################################################################
