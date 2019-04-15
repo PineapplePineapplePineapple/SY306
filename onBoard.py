@@ -77,14 +77,14 @@ if form.getvalue("newUser")=="False":
             SDict["Role"]=results[0][3]
             session.end(SDict)
             #Direct user to the message board
-            print("Location: http://midn.cyber.usna.edu/~m202556/Project/messagePost.py\n")
+            print("Location: http://midn.cyber.usna.edu/~m202556/project01/messagePost.py\n")
 
         #Failed login flow
         else:
 
             session.end(SDict)
             #refreshed the login page, and triggers the 'invalid credentials' error message
-            print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
+            print("Location: http://midn.cyber.usna.edu/~m202556/project01/login.html\n")
 
     except mysql.connector.Error as err:
         print ('<p style = "color:red">')
@@ -108,14 +108,14 @@ elif form.getvalue("newUser")=="True":
         if results != []:
             #Username taken
             session.end(SDict)
-            print("Location: http://midn.cyber.usna.edu/~m202556/Project/signup.html\n")
+            print("Location: http://midn.cyber.usna.edu/~m202556/project01/signup.html\n")
 
         #Create user if no such prexisting user exists
         else:
             query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
             cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
             #Direct the user to login
-            print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
+            print("Location: http://midn.cyber.usna.edu/~m202556/project01/login.html\n")
 
             cursor.close() # close cursor when no longer needed to access database
 
@@ -142,7 +142,7 @@ elif form.getvalue("newUser")=="True":
 #Access CGI directly###################################################################################
 else:
       session.end(SDict)
-      print("Location: http://midn.cyber.usna.edu/~m202556/Project/login.html\n")
+      print("Location: http://midn.cyber.usna.edu/~m202556/project01/login.html\n")
 
 print ('</body></html>')
 #######################################################################################################

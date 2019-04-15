@@ -10,13 +10,13 @@ if (performance.navigation.type == 1) {
   // see which URL the user just came from
   var oldURL = document.referrer;
   // the user came from signup.html and is currently in signup.html it means the username is already being used so print out an alert that the username already exists
-  if (oldURL == "http://midn.cyber.usna.edu/~m202556/Project/signup.html" && document.location=="http://midn.cyber.usna.edu/~m202556/Project/signup.html") {
+  if (oldURL == "http://midn.cyber.usna.edu/~m202556/project01/signup.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project01/signup.html") {
     alert("Username already exists");
     document.getElementById('usernameerrors').innerHTML="Username exists";
     //document.getElementById('usernameerrors').innerHTML="Username already exists";
   }
   // if the user came from login.html and is currently in login.html that means the login credentials were invalid so send an alert saying they were invalid
-  if (oldURL == "http://midn.cyber.usna.edu/~m202556/Project/login.html" && document.location=="http://midn.cyber.usna.edu/~m202556/Project/login.html") {
+  if (oldURL == "http://midn.cyber.usna.edu/~m202556/project01/login.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project01/login.html") {
     alert("Invalid credentials");
   }
 }
