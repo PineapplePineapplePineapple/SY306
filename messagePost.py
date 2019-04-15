@@ -78,7 +78,7 @@ def addMessage(cursor, content, username):
 
 
 def printMessage(cursor):
-  query = "SELECT MESSAGES.Username, Content, Time FROM USERS, MESSAGES WHERE USERS.Username = MESSAGES.Username ORDER BY Time"
+  query = "SELECT MESSAGES.Username, Content, Time, MID FROM USERS, MESSAGES WHERE USERS.Username = MESSAGES.Username ORDER BY Time"
   try:
     cursor.execute(query)
   except mysql.connector.Error as err:
@@ -91,9 +91,9 @@ def printMessage(cursor):
   nbRows = 0
 
   newmessages="<ul class=\"collection with-header\">"
-  for (Username, Content, Time) in cursor:
+  for (Username, Content, Time, MID) in cursor:
      if Username==currentSession["Username"] or currentSession["Role"]=="admin":
-         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "<a href=\"#!\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
+         newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "<a href=\"messagePost.py?del="+str(MID)+"\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
      else:
          newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br>"+str(Content)+"<br>"+str(Time)+ "</div></li>\n"
 
@@ -117,6 +117,8 @@ username = currentSession["Username"]
 #see if needed to insert data - get parameters from the form
 params = cgi.FieldStorage()
 talk = params.getvalue("talk")
+#see if deletion request was made
+delete= params.getvalue("del")
 
 #if insert button was pushed
 if talk:
@@ -128,43 +130,25 @@ if talk:
   #
   #   #print('Status: 303 See Other')
   print('Location: messagePost.py')
-  #   print('Content-type: text/html')
-  #   print()
-  #   #Note, we do not stop execution at this point, there is some clean up to do that
-  #   #is common with the action in the else statement so it follows that.
-  # else:
-  #  #So if we get to this part of the code it means that the insert failed.
-  #  #We need to print HTTP Headers and content.
-  #  print('Content-type: text/html')
-  #  print()
-  # print ("""\
-  # <!DOCTYPE html>
-  # <html>
-  # <head>
-  # <meta charset = "utf-8">
-  # <meta http-equiv="refresh" content="5; url=song.py">
-  # <title>DB connection Error</title>
-  # <style type = "text/css">
-  # table, td, th {border:1px solid black}
-  # </style>
-  # </head>
-  # <body>
-  # """)
-  # print ('<h2>Could not insert the song</h2>')
-    #  #Now we branch depending on the error code encountered.
-    #  if result == 0:
-    #     print ('<p>Sorry, something unexpected happened when we tried to add the song to the database. You will be redirected to the song list shortly.</p>')
 
-    #now need to clean up database cursor, etc
-  # cursor.close()
-  #   #commit the transaction
-  # conn.commit()  #this is really important otherwise all changes lost
-  #   #close connection
-  # conn.close()
-  # quit()
+if delete:
+    query = "DELETE FROM MESSAGES where MID="+str(delete)
+#   #execute the query
+    try:
+       cursor.execute(query)
+    except mysql.connector.Error as err:
+        print ('Content-type: text/html')
+        print()
+        print ('<!DOCTYPE html><html><head><meta charset="utf-8"><title>SQL Error</title></head>')
+        print ('<body>')
+        print ('<p style = "color:red">')
+        print (err)
+        print ('</p>')
+        #close the document
+        print ('</body></html>')
 
-#If there are not values for the insert then we need to display the database contents.
-#This can be done without an else statement since if there are values the script terminates.
+
+
 
 #First we need our HTTP headers and HTML opening code
 print ( "Content-type: text/html" )
