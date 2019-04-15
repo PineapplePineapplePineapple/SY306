@@ -1,3 +1,7 @@
+# message.py
+#
+# Jacob Harrison
+
 import mysql.connector
 
 class message:

@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# messagePost.py
+# This file creates the dynamic message board, allows us to add messsages to sql database, print messages dynamically
+# onto the message board, and delete the messages that the user has posted
+# Kestrel Kuhne
+
 import cgi,cgitb
 import time
 
@@ -198,9 +204,9 @@ print ("""\
 
 </p>
 <br>
-<table class="col s6 offset-s3" border="1">
+<table class="col s6 offset-s3">
 	<tr>
-		<td colspan=4>
+		<td>
 """)
 
 print ("""\

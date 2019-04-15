@@ -1,3 +1,7 @@
+// formcheck.js
+// runs all the client side for
+// Jaocb Harrison
+
 if (performance.navigation.type == 1) {
   console.info( "This page is reloaded" );
 } else {
