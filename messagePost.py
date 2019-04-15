@@ -131,7 +131,13 @@ cursor = conn.cursor()
 #Begin session
 currentSession=session.start()
 # grab the username that is being used in the current session
-username = currentSession["Username"]
+try:
+    username = currentSession["Username"]
+except:
+    print('Location:signup.html')
+
+
+
 
 #see if needed to insert data - get parameters from the form
 params = cgi.FieldStorage()
