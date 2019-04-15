@@ -2,6 +2,7 @@
 
 #onBoard.py
 #processes credentials from signup/login page
+#maintainer: Jacques Henot
 
 #Modules
 import cgi

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-#adapted from http://webpython.codepoint.net
+#session.py
 #script to create or continue a session; time of last visit will be stored in a session variable
+#adapted from http://webpython.codepoint.net and tailored for our message board
+#maintainer: Jacques Henot
 
 import hashlib, time, os, shelve
 from http import cookies
