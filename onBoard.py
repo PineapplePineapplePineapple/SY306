@@ -72,7 +72,7 @@ if form.getvalue("newUser")=="False":
 
 
     try:
-        query = "SELECT Username,Name,Password FROM USERS WHERE Username=%s AND Password=%s;"
+        query = "SELECT Username,Name,Password,Role FROM USERS WHERE Username=%s AND Password=%s;"
         cursor.execute(query,(form.getvalue("Username"),form.getvalue("Password")))
         results = cursor.fetchall()
         if results!=[]:
@@ -88,6 +88,7 @@ if form.getvalue("newUser")=="False":
             # print(results[0][0])
             # print ('</p>')
             SDict["Username"]=results[0][0]
+            SDict["Role"]=results[0][3]
             session.end(SDict)
             print("Location: http://midn.cyber.usna.edu/~m202556/Project/messagePost.py\n")
 
