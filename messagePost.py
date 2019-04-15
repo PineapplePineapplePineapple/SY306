@@ -110,7 +110,7 @@ def printMessage(cursor):
      if Username==currentSession["Username"] or currentSession["Role"]=="admin":
          newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br><blockquote>"+str(Content)+"</blockquote><br>"+str(Time)+ "<a href=\"messagePost.py?del="+str(MID)+"\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
      else:
-         newmessages += "<li class=\" red lighten-5 collection-item\"><div>"+ str(Username)+"<br><blockquote>"+str(Content)+"</blockquote><br>"+str(Time)+ "</div></li>\n"
+         newmessages += "<li class=\" right-align collection-item\"><div>"+ str(Username)+"<br><blockquote>"+str(Content)+"</blockquote><br>"+str(Time)+ "</div></li>\n"
 
 
      nbRows+=1
