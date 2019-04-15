@@ -16,12 +16,14 @@ from mysql.connector import errorcode
 import config
 import session
 
+# access data from config.py to connect to mysql database
 try:
   conn = mysql.connector.connect(user=config.USER,
                                 password = config.PASSWORD,
                                 host = config.HOST,
                                 database=config.DATABASE)
 
+# error checking if the mysql database fails
 except mysql.connector.Error as err:
   #If we have an error connecting to the database we would like to output this fact.
   #This requires that we output the HTTP headers and some HTML.
@@ -39,6 +41,7 @@ except mysql.connector.Error as err:
   </head>
   <body>
   """)
+  # error checking continued
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")
   elif err.errno == errorcode.ER_BAD_DB_ERROR:
@@ -49,7 +52,7 @@ except mysql.connector.Error as err:
   quit()
 
 
-
+# addMessage function adds the written messags into the mysql database for the specified user
 def addMessage(cursor, content, username):
 
   #create query statement
@@ -75,17 +78,20 @@ def addMessage(cursor, content, username):
   songID = cursor.lastrowid
 
   if nbRowsInserted > 0:
-
+    #return True
     return 1
   else:
     ##return False
     return 0
 
 
-
+# printMessage function does a SELECT statement and prints out all of the messages on the message board that have been
+#entered into the database.
 def printMessage(cursor):
+#query statement for printing the messages onto the message board and ordering the messages by time
   query = "SELECT MESSAGES.Username, Content, Time, MID FROM USERS, MESSAGES WHERE USERS.Username = MESSAGES.Username ORDER BY Time"
   try:
+    #execute query statement
     cursor.execute(query)
   except mysql.connector.Error as err:
     #for DEBUG only we'll print the error and statement- we should print some generic message instead for production site
@@ -97,7 +103,10 @@ def printMessage(cursor):
   nbRows = 0
 
   newmessages="<ul class=\"collection with-header\">"
+  # run a for loop for all of the messages in the message table
   for (Username, Content, Time, MID) in cursor:
+     # if that specific user wrote that message a delete button appears and they can delete their own messages. Admin can
+     # delete all messages
      if Username==currentSession["Username"] or currentSession["Role"]=="admin":
          newmessages += "<li class=\"collection-item\"><div>"+ str(Username)+"<br><blockquote>"+str(Content)+"</blockquote><br>"+str(Time)+ "<a href=\"messagePost.py?del="+str(MID)+"\" class=\"secondary-content\"><i class=\"material-icons\">delete</i></a></div></li>\n"
      else:
@@ -106,6 +115,7 @@ def printMessage(cursor):
 
      nbRows+=1
 
+#prints out the rows with all of the messages
   if nbRows > 0:
     return newmessages + "</ul>"
   else:
@@ -118,6 +128,7 @@ def printMessage(cursor):
 cursor = conn.cursor()
 #Begin session
 currentSession=session.start()
+# grab the username that is being used in the current session
 username = currentSession["Username"]
 
 #see if needed to insert data - get parameters from the form
@@ -126,21 +137,23 @@ talk = params.getvalue("talk")
 #see if deletion request was made
 delete= params.getvalue("del")
 
-#if insert button was pushed
+#if talk button was pushed
 if talk:
 
   content = params.getvalue("talk")
+  # pass the parameteres into addMessage which adds the message info into the database
   result = addMessage(cursor, content, username)
-  #print either a confirmation message or error message
-  # if result==1:
-  #
-  #   #print('Status: 303 See Other')
+  # reload the message board with the new message added
   print('Location: messagePost.py')
 
+# if the deletion request was made we check to make sure that the deletion request is coming from the user who wrote the message
 if delete:
+    # query statement to grab the Username making the deletion request
     query = "SELECT MESSAGES.Username FROM MESSAGES WHERE MID="+str(delete)
     try:
+    # execute the query
        cursor.execute(query)
+    # error checking if query goes wrong
     except mysql.connector.Error as err:
         print ('Content-type: text/html')
         print()
@@ -151,12 +164,15 @@ if delete:
         print ('</p>')
         #close the document
         print ('</body></html>')
+    # for loop for the Username being called
     for (Username,) in cursor:
+        # if the Username matches the current session username or the admin account is being used then delete the message from the database
         if Username==currentSession["Username"] or currentSession["Role"]=="admin":
             query = "DELETE FROM MESSAGES where MID="+str(delete)
         #   #execute the query
             try:
                cursor.execute(query)
+            # error checking
             except mysql.connector.Error as err:
                 print ('Content-type: text/html')
                 print()
@@ -172,6 +188,9 @@ if delete:
 
 
 #First we need our HTTP headers and HTML opening code
+# the HTML format for our message board -- normal styling w/ the ability to sign out in the top right corner by clicking on "change user"
+# we name the textarea part of the message board "talk" so that when the user writes a message talk=True and we can
+# run that check to print the messages to the message board
 print ( "Content-type: text/html" )
 print()
 print ("""\
@@ -225,9 +244,10 @@ print ("""\
 </form>
 """)
 
-
+#calling the printMessage function when the message board is logged into so that all messages appear
 message = printMessage(cursor)
 
+# if messages exist print them out, if not then show 'No messages yet'
 if message:
   print (message)
 else:
