@@ -37,6 +37,8 @@ def html_escape(text):
 
 
 
+
+
 #SQL connection
 try:
     conn = mysql.connector.connect(user=config.USER,
@@ -125,7 +127,7 @@ elif form.getvalue("newUser")=="True":
         #Create user if no such prexisting user exists
         else:
             query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
-            cursor.execute(query,(html_escape(form.getvalue("Username")),form.getvalue("Name"),form.getvalue("Password")))
+            cursor.execute(query,(html_escape(form.getvalue("Username")),html_escape(form.getvalue("Name")),form.getvalue("Password")))
             #Direct the user to login
             print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
 
