@@ -136,7 +136,9 @@ function validateUsername() {
     return true;
   }
   var y = document.forms["signupform"]["username"].value;
-  escapeHtml(y);
+  if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
+    escapeHtml(y);
+  }
 }
 
 // function for validating just the password textbox onblur
