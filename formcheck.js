@@ -88,7 +88,9 @@ function validateForm_login() {
     return false;
   }
   // character escape the username text
-  escapeHtml(y);
+  if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
+    escapeHtml(y);
+  }
   var z = document.forms["signupform"]["pswd"].value;
   // make sure password text box isn't empty
   if (document.forms["signupform"]["pswd"].value == "") {
@@ -96,7 +98,9 @@ function validateForm_login() {
     return false;
   }
   // character escape
-  escapeHtml(z);
+  if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
+    escapeHtml(z);
+  }
 }
 
 // function for validating just the first/last name textbox onblur
