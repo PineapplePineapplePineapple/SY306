@@ -8,6 +8,7 @@
 import cgi
 import cgitb
 import re
+import hashlib
 #SQL Modules
 import mysql.connector #library for database being used
 from mysql.connector import errorcode #  allows error handling
@@ -81,7 +82,8 @@ if form.getvalue("newUser")=="False":
     #Authenticate
     try:
         query = "SELECT Username,Name,Password,Role FROM USERS WHERE Username=%s AND Password=%s;"
-        cursor.execute(query,(form.getvalue("Username"),form.getvalue("Password")))
+        pDigest=hashlib.sha256(form.getvalue("Password").encode("utf-8")).hexdigest()
+        cursor.execute(query,(form.getvalue("Username"),pDigest))
         results = cursor.fetchall()
 
         #Successful login flow
@@ -127,7 +129,9 @@ elif form.getvalue("newUser")=="True":
         #Create user if no such prexisting user exists
         else:
             query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
-            cursor.execute(query,(html_escape(form.getvalue("Username")),html_escape(form.getvalue("Name")),form.getvalue("Password")))
+
+            pDigest=hashlib.sha256(form.getvalue("Password").encode("utf-8")).hexdigest()
+            cursor.execute(query,(html_escape(form.getvalue("Username")),html_escape(form.getvalue("Name")),pDigest))
             #Direct the user to login
             print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
 
