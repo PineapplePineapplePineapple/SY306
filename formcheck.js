@@ -67,30 +67,6 @@ function validateForm() {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
-  // access first/last name, username, and password and pass them all through the character escaping function
-  // var x = document.forms["signupform"]["fl_name"].value;
-  // if (/</g.test(x) == true) or (/>/g.test(x) == true) or (/&/g.test(x) == true) or (/'/g.test(x) == true) or (/"/g.test(x) == true) {
-  //   escapeHtml(x);
-  // }
-  // var y = document.forms["signupform"]["username"].value;
-  // if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
-  //   escapeHtml(y);
-  // }
-  // var z = document.forms["signupform"]["pswd"].value;
-  // if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
-  //   escapeHtml(z);
-  // }
-  // var x = document.forms["signupform"]["fl_name"].value;
-  // if (/</g.test(x) == true) {
-  //   var x = x.replace(/</g, "&lt;");
-  //   document.forms["signupform"]["fl_name"].value = x;
-  // }
-  // if (/>/g.test(x) == true ) {
-  //   var x = x.replace(/</g, "&lt;");
-  //   document.forms["signupform"]["fl_name"].value = x;
-  // }
-  // var y = document.forms["signupform"]["username"].value;
-  // var z = document.forms["signupform"]["pswd"].value;
 }
 
 // function to validation the login form on submit
@@ -105,10 +81,6 @@ function validateForm_login() {
     document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
     return false;
   }
-  // character escape the username text
-  // if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
-  //   escapeHtml(y);
-  // }
   var z = document.forms["signupform"]["pswd"].value;
   // make sure password text box isn't empty
   if (document.forms["signupform"]["pswd"].value == "") {
@@ -119,10 +91,6 @@ function validateForm_login() {
     document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
     return false;
   }
-  // character escape
-  // if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
-  //   escapeHtml(z);
-  // }
 }
 
 // function for validating just the first/last name textbox onblur
@@ -143,10 +111,6 @@ function validate_fl_name() {
     document.getElementById('fl_name_errors').innerHTML="Maximum of 50 characters for name";
     return false;
   }
-  // var x = document.forms["signupform"]["fl_name"].value;
-  // if (/</g.test(x) == true) or (/>/g.test(x) == true) or (/&/g.test(x) == true) or (/'/g.test(x) == true) or (/"/g.test(x) == true) {
-  //   escapeHtml(x);
-  // }
 }
 
 // function for validating just the username textbox onblur
@@ -162,14 +126,15 @@ function validateUsername() {
     document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
     return false;
   }
+  var y = document.forms["signupform"]["username"]
+  if (x.length < 21 && (y.value!="") == true) {
+    document.getElementById('pswderrors').innerHTML="";
+    return true;
+  }
   // if textbox is not empty erase the error message
   // if (document.forms["signupform"]["username"].value != "") {
   //   document.getElementById('usernameerrors').innerHTML="";
   //   return true;
-  // }
-  // var y = document.forms["signupform"]["username"].value;
-  // if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
-  //   escapeHtml(y);
   // }
 }
 
@@ -192,14 +157,10 @@ function validatePswd() {
     return false;
   }
   //check that both password requirements are met to clear error box
-  if (x.length > 5 && /\d/.test(x) == true) {
+  if (x.length > 5 && /\d/.test(x) && x.length < 31 == true) {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
-  // var z = document.forms["signupform"]["pswd"].value;
-  // if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
-  //   escapeHtml(z);
-  // }
 }
 
 // function for validating the password textbox on the login page
@@ -219,30 +180,9 @@ function validatePswd_login() {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
-  // var z = document.forms["signupform"]["pswd"].value;
-  // if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
-  //   escapeHtml(z);
-  // }
-}
-
-// escape bad characters function
-// function escapeHtml(unsafe) {
-//   return unsafe
-//        .replace(/&/g, "&amp;")
-//        .replace(/</g, "&lt;")
-//        .replace(/>/g, "&gt;")
-//        .replace(/"/g, "&quot;")
-//        .replace(/'/g, "&#039;");
-// }
-
-function escapeHtml(text) {
-  var map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-
-  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+  y = document.forms["signupform"]["pswd"]
+  if (x.length < 31 && (y.value!="") == true) {
+    document.getElementById('pswderrors').innerHTML="";
+    return true;
+  }
 }
