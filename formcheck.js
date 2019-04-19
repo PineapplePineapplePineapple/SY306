@@ -117,7 +117,9 @@ function validate_fl_name() {
     return true;
   }
   var x = document.forms["signupform"]["fl_name"].value;
-  escapeHtml(x);
+  if (/</g.test(x) == true) or (/>/g.test(x) == true) or (/&/g.test(x) == true) or (/'/g.test(x) == true) or (/"/g.test(x) == true) {
+    escapeHtml(x);
+  }
 }
 
 // function for validating just the username textbox onblur
