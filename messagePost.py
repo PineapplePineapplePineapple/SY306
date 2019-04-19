@@ -15,6 +15,17 @@ from mysql.connector import errorcode
 
 import config
 import session
+html_escape_table = {
+    "&": "&amp;",
+    '"': "&quot;",
+    "'": "&apos;",
+    ">": "&gt;",
+    "<": "&lt;",
+}
+#Taken from https://wiki.python.org/moin/EscapingHtml
+def html_escape(text):
+    return "".join(html_escape_table.get(c,c) for c in text)
+
 
 # access data from config.py to connect to mysql database
 try:
@@ -59,7 +70,7 @@ def addMessage(cursor, content, username):
   query = "Insert into MESSAGES(Username, Content) values (%s,%s)"
   #execute the query
   try:
-    cursor.execute(query,(username,content))
+    cursor.execute(query,(username,html_escape(content)))
   except mysql.connector.Error as err:
 
     #If we are going to debug, we need to declare the HTTP Headers and html then exit
