@@ -161,7 +161,9 @@ function validatePswd() {
     return true;
   }
   var z = document.forms["signupform"]["pswd"].value;
-  escapeHtml(z);
+  if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
+    escapeHtml(z);
+  }
 }
 
 // function for validating the password textbox on the login page
@@ -177,7 +179,9 @@ function validatePswd_login() {
     return true;
   }
   var z = document.forms["signupform"]["pswd"].value;
-  escapeHtml(z);
+  if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
+    escapeHtml(z);
+  }
 }
 
 // escape bad characters function
