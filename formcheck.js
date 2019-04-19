@@ -32,12 +32,24 @@ function validateForm() {
     document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
     return false;
   }
+  if (document.forms["signupform"]["fl_name"].length > 50) {
+    document.getElementById('fl_name_errors').innerHTML="Maximum of 50 characters for name";
+    return false;
+  }
   // make sure username text box isn't empty and return error if it is
   if (document.forms["signupform"]["username"].value == "") {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
+  if (document.forms["signupform"]["username"].length > 20) {
+    document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
+    return false;
+  }
   var x = document.forms["signupform"]["pswd"].value;
+  if (document.forms["signupform"]["pswd"].length > 30) {
+    document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
+    return false;
+  }
   //if the password is less than length of 6 return error
   if (x.length < 6) {
      document.getElementById('pswderrors').innerHTML="Password must be at least 6 characters";
@@ -54,18 +66,18 @@ function validateForm() {
     return true;
   }
   // access first/last name, username, and password and pass them all through the character escaping function
-  var x = document.forms["signupform"]["fl_name"].value;
-  if (/</g.test(x) == true) or (/>/g.test(x) == true) or (/&/g.test(x) == true) or (/'/g.test(x) == true) or (/"/g.test(x) == true) {
-    escapeHtml(x);
-  }
-  var y = document.forms["signupform"]["username"].value;
-  if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
-    escapeHtml(y);
-  }
-  var z = document.forms["signupform"]["pswd"].value;
-  if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
-    escapeHtml(z);
-  }
+  // var x = document.forms["signupform"]["fl_name"].value;
+  // if (/</g.test(x) == true) or (/>/g.test(x) == true) or (/&/g.test(x) == true) or (/'/g.test(x) == true) or (/"/g.test(x) == true) {
+  //   escapeHtml(x);
+  // }
+  // var y = document.forms["signupform"]["username"].value;
+  // if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
+  //   escapeHtml(y);
+  // }
+  // var z = document.forms["signupform"]["pswd"].value;
+  // if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
+  //   escapeHtml(z);
+  // }
   // var x = document.forms["signupform"]["fl_name"].value;
   // if (/</g.test(x) == true) {
   //   var x = x.replace(/</g, "&lt;");
@@ -87,20 +99,28 @@ function validateForm_login() {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
-  // character escape the username text
-  if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
-    escapeHtml(y);
+  if (document.forms["signupform"]["username"].length > 20) {
+    document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
+    return false;
   }
+  // character escape the username text
+  // if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
+  //   escapeHtml(y);
+  // }
   var z = document.forms["signupform"]["pswd"].value;
   // make sure password text box isn't empty
   if (document.forms["signupform"]["pswd"].value == "") {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
     return false;
   }
-  // character escape
-  if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
-    escapeHtml(z);
+  if (document.forms["signupform"]["pswd"].length > 30) {
+    document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
+    return false;
   }
+  // character escape
+  // if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
+  //   escapeHtml(z);
+  // }
 }
 
 // function for validating just the first/last name textbox onblur
@@ -116,10 +136,14 @@ function validate_fl_name() {
     document.getElementById('fl_name_errors').innerHTML="";
     return true;
   }
-  var x = document.forms["signupform"]["fl_name"].value;
-  if (/</g.test(x) == true) or (/>/g.test(x) == true) or (/&/g.test(x) == true) or (/'/g.test(x) == true) or (/"/g.test(x) == true) {
-    escapeHtml(x);
+  if (document.forms["signupform"]["fl_name"].length > 50) {
+    document.getElementById('fl_name_errors').innerHTML="Maximum of 50 characters for name";
+    return false;
   }
+  // var x = document.forms["signupform"]["fl_name"].value;
+  // if (/</g.test(x) == true) or (/>/g.test(x) == true) or (/&/g.test(x) == true) or (/'/g.test(x) == true) or (/"/g.test(x) == true) {
+  //   escapeHtml(x);
+  // }
 }
 
 // function for validating just the username textbox onblur
@@ -135,10 +159,14 @@ function validateUsername() {
     document.getElementById('usernameerrors').innerHTML="";
     return true;
   }
-  var y = document.forms["signupform"]["username"].value;
-  if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
-    escapeHtml(y);
+  if (document.forms["signupform"]["username"].length > 20) {
+    document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
+    return false;
   }
+  // var y = document.forms["signupform"]["username"].value;
+  // if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
+  //   escapeHtml(y);
+  // }
 }
 
 // function for validating just the password textbox onblur
@@ -150,6 +178,10 @@ function validatePswd() {
      document.getElementById('pswderrors').innerHTML="Password must be at least 6 characters";
      return false;
   }
+  if (document.forms["signupform"]["pswd"].length > 30) {
+    document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
+    return false;
+  }
   //if there's no digit return an error
   if (/\d/.test(x) == false) {
     document.getElementById('pswderrors').innerHTML="Password must contain at least 1 number";
@@ -160,10 +192,10 @@ function validatePswd() {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
-  var z = document.forms["signupform"]["pswd"].value;
-  if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
-    escapeHtml(z);
-  }
+  // var z = document.forms["signupform"]["pswd"].value;
+  // if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
+  //   escapeHtml(z);
+  // }
 }
 
 // function for validating the password textbox on the login page
@@ -173,15 +205,19 @@ function validatePswd_login() {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
     return false;
   }
+  if (document.forms["signupform"]["pswd"].length > 30) {
+    document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
+    return false;
+  }
   // delete the error if the password thas text typed into it
   if (document.forms["signupform"]["pswd"].value != "") {
     document.getElementById('pswderrors').innerHTML="";
     return true;
   }
-  var z = document.forms["signupform"]["pswd"].value;
-  if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
-    escapeHtml(z);
-  }
+  // var z = document.forms["signupform"]["pswd"].value;
+  // if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
+  //   escapeHtml(z);
+  // }
 }
 
 // escape bad characters function
