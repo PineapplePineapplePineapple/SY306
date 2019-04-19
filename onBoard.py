@@ -24,6 +24,18 @@ form = cgi.FieldStorage()
 #Session Dictionary to be used
 SDict=session.start()
 
+html_escape_table = {
+    "&": "&amp;",
+    '"': "&quot;",
+    "'": "&apos;",
+    ">": "&gt;",
+    "<": "&lt;",
+}
+#Taken from https://wiki.python.org/moin/EscapingHtml
+def html_escape(text):
+    return "".join(html_escape_table.get(c,c) for c in text)
+
+
 
 #SQL connection
 try:
@@ -113,7 +125,7 @@ elif form.getvalue("newUser")=="True":
         #Create user if no such prexisting user exists
         else:
             query = "Insert into USERS(Username,Name,Password) values (%s,%s,%s)"
-            cursor.execute(query,(form.getvalue("Username"),form.getvalue("Name"),form.getvalue("Password")))
+            cursor.execute(query,(html_escape(form.getvalue("Username")),form.getvalue("Name"),form.getvalue("Password")))
             #Direct the user to login
             print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
 
