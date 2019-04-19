@@ -55,11 +55,17 @@ function validateForm() {
   }
   // access first/last name, username, and password and pass them all through the character escaping function
   var x = document.forms["signupform"]["fl_name"].value;
+  if (/</g.test(x) == true) or (/>/g.test(x) == true) or (/&/g.test(x) == true) or (/'/g.test(x) == true) or (/"/g.test(x) == true) {
+    escapeHtml(x);
+  }
   var y = document.forms["signupform"]["username"].value;
+  if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
+    escapeHtml(y);
+  }
   var z = document.forms["signupform"]["pswd"].value;
-  escapeHtml(x);
-  escapeHtml(y);
-  escapeHtml(z);
+  if (/</g.test(z) == true) or (/>/g.test(z) == true) or (/&/g.test(z) == true) or (/'/g.test(z) == true) or (/"/g.test(z) == true) {
+    escapeHtml(z);
+  }
   // var x = document.forms["signupform"]["fl_name"].value;
   // if (/</g.test(x) == true) {
   //   var x = x.replace(/</g, "&lt;");
@@ -167,11 +173,23 @@ function validatePswd_login() {
 }
 
 // escape bad characters function
-function escapeHtml(unsafe) {
-  return unsafe
-       .replace(/&/g, "&amp;")
-       .replace(/</g, "&lt;")
-       .replace(/>/g, "&gt;")
-       .replace(/"/g, "&quot;")
-       .replace(/'/g, "&#039;");
+// function escapeHtml(unsafe) {
+//   return unsafe
+//        .replace(/&/g, "&amp;")
+//        .replace(/</g, "&lt;")
+//        .replace(/>/g, "&gt;")
+//        .replace(/"/g, "&quot;")
+//        .replace(/'/g, "&#039;");
+// }
+
+function escapeHtml(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
