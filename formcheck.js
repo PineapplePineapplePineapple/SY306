@@ -32,7 +32,8 @@ function validateForm() {
     document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
     return false;
   }
-  if (document.forms["signupform"]["fl_name"].length > 50) {
+  var x = document.forms["signupform"]["fl_name"].value;
+  if (x.length > 50) {
     document.getElementById('fl_name_errors').innerHTML="Maximum of 50 characters for name";
     return false;
   }
@@ -41,12 +42,13 @@ function validateForm() {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
-  if (document.forms["signupform"]["username"].length > 20) {
+  var x = document.forms["signupform"]["username"].value;
+  if (x.length > 20) {
     document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
     return false;
   }
   var x = document.forms["signupform"]["pswd"].value;
-  if (document.forms["signupform"]["pswd"].length > 30) {
+  if (x.length > 30) {
     document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
     return false;
   }
@@ -136,7 +138,8 @@ function validate_fl_name() {
     document.getElementById('fl_name_errors').innerHTML="";
     return true;
   }
-  if (document.forms["signupform"]["fl_name"].length > 50) {
+  var x = document.forms["signupform"]["fl_name"].value;
+  if (x.length > 50) {
     document.getElementById('fl_name_errors').innerHTML="Maximum of 50 characters for name";
     return false;
   }
@@ -154,15 +157,16 @@ function validateUsername() {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
-  // if textbox is not empty erase the error message
-  if (document.forms["signupform"]["username"].value != "") {
-    document.getElementById('usernameerrors').innerHTML="";
-    return true;
-  }
-  if (document.forms["signupform"]["username"].length > 20) {
+  var x = document.forms["signupform"]["username"].value;
+  if (x.length > 20) {
     document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
     return false;
   }
+  // if textbox is not empty erase the error message
+  // if (document.forms["signupform"]["username"].value != "") {
+  //   document.getElementById('usernameerrors').innerHTML="";
+  //   return true;
+  // }
   // var y = document.forms["signupform"]["username"].value;
   // if (/</g.test(y) == true) or (/>/g.test(y) == true) or (/&/g.test(y) == true) or (/'/g.test(y) == true) or (/"/g.test(y) == true) {
   //   escapeHtml(y);
@@ -178,7 +182,7 @@ function validatePswd() {
      document.getElementById('pswderrors').innerHTML="Password must be at least 6 characters";
      return false;
   }
-  if (document.forms["signupform"]["pswd"].length > 30) {
+  if (x.length > 30) {
     document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
     return false;
   }
@@ -205,7 +209,8 @@ function validatePswd_login() {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
     return false;
   }
-  if (document.forms["signupform"]["pswd"].length > 30) {
+  var x = document.forms["signupform"]["pswd"].value;
+  if (x.length > 30) {
     document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
     return false;
   }
