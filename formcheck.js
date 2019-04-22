@@ -20,11 +20,6 @@ if (performance.navigation.type == 1) {
   }
 }
 
-
-var cleanString = dirtyString.replace(/[|&;$%@"<>()+,]/g, "");
-
-
-
 //the overall function to check and validate on submit that the form is filled out correctly based on the requirements
 function validateForm() {
   //make sure first/last name text box isn't empty
