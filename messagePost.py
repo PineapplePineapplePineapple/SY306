@@ -250,7 +250,7 @@ print ("""\
     <form action="messagePost.py" method="post" class="col s8 offset-s2">
       <div class="row">
         <div class="input-field col s8">
-          <textarea id="ta" name="talk" class="materialize-textarea"></textarea>
+          <textarea id="ta" name="talk" class="materialize-textarea" data-length="5000"></textarea>
         </div>
         <button class="btn-floating waves-effect waves-light #c62828 red darken-3" type="submit" name="insert" style="display: block; margin: 0 auto;">
         <i class="material-icons right">record_voice_over</i>
