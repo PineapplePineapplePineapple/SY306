@@ -67,6 +67,11 @@ except mysql.connector.Error as err:
 def addMessage(cursor, content, username):
 
   #create query statement
+
+
+  #content = (content[:75] + '..') if len(data) > 75 else content
+
+
   query = "Insert into MESSAGES(Username, Content) values (%s,%s)"
   #execute the query
   try:
