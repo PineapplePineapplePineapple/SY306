@@ -42,8 +42,8 @@ function validateForm() {
     return false;
   }
   var x = document.forms["signupform"]["username"].value;
-  if (x.length > 20) {
-    document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
+  if (x.length > 30) {
+    document.getElementById('usernameerrors').innerHTML="Maxiumum of 30 characters for username";
     return false;
   }
   var x = document.forms["signupform"]["pswd"].value;
@@ -70,8 +70,8 @@ function validateForm_login() {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
-  if (document.forms["signupform"]["username"].length > 20) {
-    document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
+  if (document.forms["signupform"]["username"].length > 30) {
+    document.getElementById('usernameerrors').innerHTML="Maxiumum of 30 characters for username";
     return false;
   }
   // make sure password text box isn't empty
@@ -114,12 +114,12 @@ function validateUsername() {
     return false;
   }
   var x = document.forms["signupform"]["username"].value;
-  if (x.length > 20) {
-    document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
+  if (x.length > 30) {
+    document.getElementById('usernameerrors').innerHTML="Maxiumum of 30 characters for username";
     return false;
   }
   var y = document.forms["signupform"]["username"]
-  if (x.length < 21 && (y.value!="") == true) {
+  if (x.length < 31 && (y.value!="") == true) {
     document.getElementById('usernameerrors').innerHTML="";
     return true;
   }
