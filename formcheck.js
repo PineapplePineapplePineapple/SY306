@@ -21,6 +21,7 @@ if (performance.navigation.type == 1) {
 }
 
 
+var cleanString = dirtyString.replace(/[|&;$%@"<>()+,]/g, "");
 
 
 
@@ -70,7 +71,8 @@ function validateForm_login() {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
   }
-  if (document.forms["signupform"]["username"].length > 30) {
+  var x = document.forms["signupform"]["username"].value;
+  if (x.length > 30) {
     document.getElementById('usernameerrors').innerHTML="Maxiumum of 30 characters for username";
     return false;
   }
@@ -79,7 +81,8 @@ function validateForm_login() {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
     return false;
   }
-  if (document.forms["signupform"]["pswd"].length > 30) {
+  var y = document.forms["signupform"]["pswd"].value;
+  if (y.length > 30) {
     document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
     return false;
   }
