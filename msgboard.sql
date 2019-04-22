@@ -7,3 +7,5 @@ CREATE TABLE USERS (Username varchar(20) NOT NULL, Name varchar(50) NOT NULL, Pa
 
 -- MESSAGES table has MID, Content, Username, and Time with MID being the primary key and Username being the foreign key referencing the USERS table
 CREATE TABLE MESSAGES (MID int NOT NULL AUTO_INCREMENT, Content varchar(5000) NOT NULL, Username varchar(20) NOT NULL, Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (MID), FOREIGN KEY (Username) REFERENCES USERS(Username) ON DELETE CASCADE ON UPDATE CASCADE );
+
+ALTER TABLE USERS ALTER COLUMN Password varchar(256) NOT NULL;

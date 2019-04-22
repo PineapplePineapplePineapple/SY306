@@ -13,7 +13,6 @@ if (performance.navigation.type == 1) {
   if (oldURL == "http://midn.cyber.usna.edu/~m202556/project02/signup.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project02/signup.html") {
     alert("Username already exists");
     document.getElementById('usernameerrors').innerHTML="Username exists";
-    //document.getElementById('usernameerrors').innerHTML="Username already exists";
   }
   // if the user came from login.html and is currently in login.html that means the login credentials were invalid so send an alert saying they were invalid
   if (oldURL == "http://midn.cyber.usna.edu/~m202556/project02/login.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project02/login.html") {
@@ -62,17 +61,11 @@ function validateForm() {
     document.getElementById('pswderrors').innerHTML="Password must contain at least 1 number";
     return false;
   }
-  //check that both password requirements are met to clear error box
-  if (x.length > 5 && /\d/.test(x) == true) {
-    document.getElementById('pswderrors').innerHTML="";
-    return true;
-  }
 }
 
 // function to validation the login form on submit
 function validateForm_login() {
   // make sure username text box isn't empty
-  var y = document.forms["signupform"]["username"].value;
   if (document.forms["signupform"]["username"].value == "") {
     document.getElementById('usernameerrors').innerHTML="Please fill out Username";
     return false;
@@ -81,7 +74,6 @@ function validateForm_login() {
     document.getElementById('usernameerrors').innerHTML="Maxiumum of 20 characters for username";
     return false;
   }
-  var z = document.forms["signupform"]["pswd"].value;
   // make sure password text box isn't empty
   if (document.forms["signupform"]["pswd"].value == "") {
     document.getElementById('pswderrors').innerHTML="Please fill out Password";
@@ -101,15 +93,15 @@ function validate_fl_name() {
     document.getElementById('fl_name_errors').innerHTML="Please fill out first & last name";
     return false;
   }
-  // if textbox is not empty erase the error message
-  if (document.forms["signupform"]["fl_name"].value != "") {
-    document.getElementById('fl_name_errors').innerHTML="";
-    return true;
-  }
   var x = document.forms["signupform"]["fl_name"].value;
   if (x.length > 50) {
     document.getElementById('fl_name_errors').innerHTML="Maximum of 50 characters for name";
     return false;
+  }
+  var y = document.forms["signupform"]["fl_name"];
+  if (x.length < 51 && (y.value!="") == true) {
+    document.getElementById('fl_name_errors').innerHTML="";
+    return true;
   }
 }
 
@@ -128,14 +120,9 @@ function validateUsername() {
   }
   var y = document.forms["signupform"]["username"]
   if (x.length < 21 && (y.value!="") == true) {
-    document.getElementById('pswderrors').innerHTML="";
+    document.getElementById('usernameerrors').innerHTML="";
     return true;
   }
-  // if textbox is not empty erase the error message
-  // if (document.forms["signupform"]["username"].value != "") {
-  //   document.getElementById('usernameerrors').innerHTML="";
-  //   return true;
-  // }
 }
 
 // function for validating just the password textbox onblur
@@ -175,12 +162,7 @@ function validatePswd_login() {
     document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
     return false;
   }
-  // delete the error if the password thas text typed into it
-  if (document.forms["signupform"]["pswd"].value != "") {
-    document.getElementById('pswderrors').innerHTML="";
-    return true;
-  }
-  y = document.forms["signupform"]["pswd"]
+  var y = document.forms["signupform"]["pswd"]
   if (x.length < 31 && (y.value!="") == true) {
     document.getElementById('pswderrors').innerHTML="";
     return true;
