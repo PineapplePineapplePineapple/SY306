@@ -28,7 +28,7 @@
 
   <div class="row">
     <!-- on submit call validateForm_login() function which checks all text fields and pass the data to onBoard.py -->
-   <form class="col s6 offset-s3" name="signupform" onsubmit="return validateForm_login()" action="onBoard.py">
+   <form class="col s6 offset-s3" name="signupform" onsubmit="return checkform(this) & validateForm_login();" action="onBoard.py">
     <input type="hidden" name="newUser" value="False">
      <div class="row">
        <div class="input-field col s12">
@@ -47,6 +47,41 @@
        </div>
      </div>
      <div class="row center-align">
+
+       <!-- START CAPTCHA -->
+
+       <div class="capbox">
+
+       <div id="CaptchaDiv"></div>
+
+       <div class="capbox-inner">
+       Type the above number:<br>
+
+       <input type="hidden" id="txtCaptcha">
+       <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+
+       </div>
+       </div>
+       <br><br>
+
+       <script>
+       var a = Math.ceil(Math.random() * 9)+ '';
+       var b = Math.ceil(Math.random() * 9)+ '';
+       var c = Math.ceil(Math.random() * 9)+ '';
+       var d = Math.ceil(Math.random() * 9)+ '';
+       var e = Math.ceil(Math.random() * 9)+ '';
+
+       var code = a + b + c + d + e;
+       document.getElementById("txtCaptcha").value = code;
+       document.getElementById("CaptchaDiv").innerHTML = code;
+
+
+       </script>
+       <!-- END CAPTCHA -->
+
+
+
+
       <!-- submit button -->
      <button id="submit" class="btn waves-effect waves-light #c62828 red darken-3" type="submit" name="action" style="display: block; margin: 0 auto;">Sign In
      </button>
@@ -57,6 +92,11 @@
      <a href="signup.html" class="waves-effect waves-light btn red darken-3">Sign up</a>
    </div>
    </form>
+
+
+
+
+
  </div>
   <!-- <p class="center-align">Dont have an account? <a href="signup.html">Click here</a> to sign up!</p> -->
 

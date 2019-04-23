@@ -1,0 +1,4 @@
+AuthUserFile /home/mids/m202556/public_html/project02/admin/.htaccess
+AuthType Digest
+AuthName "admin"
+Require valid-user

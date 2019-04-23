@@ -16,9 +16,49 @@ if (performance.navigation.type == 1) {
   }
   // if the user came from login.html and is currently in login.html that means the login credentials were invalid so send an alert saying they were invalid
   if (oldURL == "http://midn.cyber.usna.edu/~m202556/project02/login.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project02/login.html") {
-    alert("Invalid credentials");
+    alert("Failed logon attempt");
   }
 }
+
+
+function checkform(theform){
+var why = "";
+
+if(theform.CaptchaInput.value == ""){
+why += "- Please Enter CAPTCHA Code.\n";
+window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
+
+}
+if(theform.CaptchaInput.value != ""){
+if(ValidCaptcha(theform.CaptchaInput.value) == false){
+why += "- The CAPTCHA Code Does Not Match.\n";
+}
+}
+if(why != ""){
+alert(why);
+window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
+return false;
+}
+}
+
+
+// Validate input against the generated number
+function ValidCaptcha(){
+var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
+if (str1 == str2){
+return true;
+}else{
+window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
+return false;
+}
+}
+
+// Remove the spaces from the entered and generated code
+function removeSpaces(string){
+return string.split(' ').join('');
+}
+
 
 //the overall function to check and validate on submit that the signup form is filled out correctly based on the requirements
 function validateForm() {

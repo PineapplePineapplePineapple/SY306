@@ -52,6 +52,7 @@ def start():
     #       time.asctime(time.localtime(float(lastvisit)))
     # Save the current time in the session
     session['lastvisit'] = repr(time.time())
+    session['sid']=sid
 
     return session
 

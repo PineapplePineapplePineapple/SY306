@@ -93,7 +93,10 @@ if form.getvalue("newUser")=="False":
             SDict["Role"]=results[0][3]
             session.end(SDict)
             #Direct user to the message board
-            print("Location: http://midn.cyber.usna.edu/~m202556/project02/messagePost.py\n")
+            if results[0][3]=="admin":
+                print("Location: http://midn.cyber.usna.edu/~m202556/project02/admin/admin.html\n")
+            else:
+                print("Location: http://midn.cyber.usna.edu/~m202556/project02/messagePost.py\n")
 
         #Failed login flow
         else:
