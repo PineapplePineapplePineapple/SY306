@@ -37,7 +37,42 @@ def html_escape(text):
     return "".join(html_escape_table.get(c,c) for c in text)
 
 
-
+if (form.getvalue("fl_name") == "") {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+x = form.getvalue("fl_name")
+if (x.length > 50) {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+x = form.getvalue("fl_name")
+if (re.search('[!@#$%^&*(),.?":{}|<>]', x) != None) {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+if (form.getvalue("username") == "") {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+x = form.getvalue("username")
+if (x.length > 30) {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+x = form.getvalue("username")
+if (re.search('[!@#$%^&*(),.?":{}|<>]', x) != None) {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+x = form.getvalue("pswd")
+if (x.length > 30) {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+if (x.length < 6) {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+if (re.search("\d", x) == None) {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
+x = form.getvalue("pswd")
+if (re.search('[!@#$%^&*(),.?":{}|<>]', x) != None) {
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+}
 
 
 #SQL connection
