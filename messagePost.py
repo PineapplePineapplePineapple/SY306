@@ -69,12 +69,13 @@ def addMessage(cursor, content, username):
   #create query statement
 
 
-  #content = (content[:75] + '..') if len(data) > 75 else content
+  content = (content[:150] + '...') if len(content) > 150 else content
 
 
   query = "Insert into MESSAGES(Username, Content) values (%s,%s)"
   #execute the query
   try:
+
     cursor.execute(query,(username,html_escape(content)))
   except mysql.connector.Error as err:
 
@@ -227,6 +228,7 @@ print ("""\
   <link rel="icon" href="http://static1.squarespace.com/static/537ffea2e4b011aa8abe92c9/t/550ae1f8e4b01e598aec20dc/1548191522912/">
   <link rel="stylesheet" type="text/css" href="acme.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </head>
 <body>
@@ -255,7 +257,8 @@ print ("""\
     <form action="messagePost.py" method="post" class="col s8 offset-s2">
       <div class="row">
         <div class="input-field col s8">
-          <textarea id="ta" name="talk" class="materialize-textarea" data-length="5000"></textarea>
+          <textarea id="ta" name="talk" class="materialize-textarea" data-length="150"></textarea>
+          <label for="textarea2">Start typing!</label>
         </div>
         <button class="btn-floating waves-effect waves-light #c62828 red darken-3" type="submit" name="insert" style="display: block; margin: 0 auto;">
         <i class="material-icons right">record_voice_over</i>
