@@ -20,6 +20,10 @@ if (performance.navigation.type == 1) {
   }
 }
 
+function login(){
+  return validateForm_login() && checkform("signupform");
+}
+
 // function that validates the entered CAPTCHA code, reloads the login page if there's an error
 function checkform(theform){
 var why = "";
