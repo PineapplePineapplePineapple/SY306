@@ -21,18 +21,18 @@ if (performance.navigation.type == 1) {
 }
 
 function login(){
-  return validateForm_login() && checkform("signupform");
+  return validateForm_login() && checkform();
 }
 
 // function that validates the entered CAPTCHA code, reloads the login page if there's an error
-function checkform(theform){
+function checkform(){
 var why = "";
 
 // if(theform.CaptchaInput.value == ""){
 // why += "- Please Enter CAPTCHA Code.\n";
 //
 // }
-if(document.forms[theform]["CaptchaInput"].value == ""){
+if(document.forms["signupform"]["CaptchaInput"].value == ""){
 why += "- Please Enter CAPTCHA Code.\n";
 }
 
@@ -41,8 +41,8 @@ why += "- Please Enter CAPTCHA Code.\n";
 // why += "- The CAPTCHA Code Does Not Match.\n";
 // }
 // }
-if(document.forms[theform]["CaptchaInput"].value  != ""){
-if(ValidCaptcha(document.forms[theform]["CaptchaInput"].value ) == false){
+if(document.forms["signupform"]["CaptchaInput"].value  != ""){
+if(ValidCaptcha(document.forms["signupform"]["CaptchaInput"].value ) == false){
 why += "- The CAPTCHA Code Does Not Match.\n";
 }
 }
