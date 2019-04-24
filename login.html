@@ -28,7 +28,7 @@
 
   <div class="row">
     <!-- on submit call validateForm_login() function which checks all text fields and pass the data to onBoard.py -->
-   <form class="col s6 offset-s3" name="signupform" onsubmit="return !!((checkform(signupform) & validateForm_login());" action="onBoard.py">
+   <form class="col s6 offset-s3" name="signupform" onsubmit="return !!(checkform(signupform) & validateForm_login());" action="onBoard.py">
     <input type="hidden" name="newUser" value="False">
      <div class="row">
        <div class="input-field col s12">
