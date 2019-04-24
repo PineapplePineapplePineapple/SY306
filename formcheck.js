@@ -24,19 +24,10 @@ if (performance.navigation.type == 1) {
 function checkform(){
 var why = "";
 
-// if(theform.CaptchaInput.value == ""){
-// why += "- Please Enter CAPTCHA Code.\n";
-//
-// }
 if(document.forms["signupform"]["CaptchaInput"].value == ""){
 why += "- Please Enter CAPTCHA Code.\n";
 }
 
-// if(theform.CaptchaInput.value != ""){
-// if(ValidCaptcha(theform.CaptchaInput.value) == false){
-// why += "- The CAPTCHA Code Does Not Match.\n";
-// }
-// }
 if(document.forms["signupform"]["CaptchaInput"].value  != ""){
 if(ValidCaptcha(document.forms["signupform"]["CaptchaInput"].value ) == false){
 why += "- The CAPTCHA Code Does Not Match.\n";
