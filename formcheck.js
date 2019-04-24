@@ -28,17 +28,27 @@ function login(){
 function checkform(theform){
 var why = "";
 
-if(theform.CaptchaInput.value == ""){
+// if(theform.CaptchaInput.value == ""){
+// why += "- Please Enter CAPTCHA Code.\n";
+//
+// }
+if(document.forms[theform]["CaptchaInput"].value == ""){
 why += "- Please Enter CAPTCHA Code.\n";
 
 }
-if(theform.CaptchaInput.value != ""){
-if(ValidCaptcha(theform.CaptchaInput.value) == false){
+
+// if(theform.CaptchaInput.value != ""){
+// if(ValidCaptcha(theform.CaptchaInput.value) == false){
+// why += "- The CAPTCHA Code Does Not Match.\n";
+// }
+// }
+if(document.forms[theform]["CaptchaInput"].value  != ""){
+if(ValidCaptcha(document.forms[theform]["CaptchaInput"].value ) == false){
 why += "- The CAPTCHA Code Does Not Match.\n";
 }
 }
+
 if(why != ""){
-console.log(why);
 alert(why);
 window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
 return false;
@@ -48,13 +58,10 @@ return true;
 }
 }
 
-
 // Validate input against the generated number
 function ValidCaptcha(){
 var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
 var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
-console.log(str1);
-console.log(str2);
 if (str1 == str2){
 return true;
 }else{
