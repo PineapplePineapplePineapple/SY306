@@ -20,10 +20,6 @@ if (performance.navigation.type == 1) {
   }
 }
 
-function login(){
-  return validateForm_login() && checkform();
-}
-
 // function that validates the entered CAPTCHA code, reloads the login page if there's an error
 function checkform(){
 var why = "";
@@ -52,7 +48,7 @@ alert(why);
 window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
 return false;
 }
-if(why == ""){
+else{
 return true;
 }
 }
