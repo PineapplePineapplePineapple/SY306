@@ -37,42 +37,9 @@ def html_escape(text):
     return "".join(html_escape_table.get(c,c) for c in text)
 
 
-if (form.getvalue("fl_name") == "") {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-x = form.getvalue("fl_name")
-if (x.length > 50) {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-x = form.getvalue("fl_name")
-if (re.search('[!@#$%^&*(),.?":{}|<>]', x) != None) {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-if (form.getvalue("username") == "") {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-x = form.getvalue("username")
-if (x.length > 30) {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-x = form.getvalue("username")
-if (re.search('[!@#$%^&*(),.?":{}|<>]', x) != None) {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-x = form.getvalue("pswd")
-if (x.length > 30) {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-if (x.length < 6) {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-if (re.search("\d", x) == None) {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
-x = form.getvalue("pswd")
-if (re.search('[!@#$%^&*(),.?":{}|<>]', x) != None) {
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
-}
+
+
+
 
 
 #SQL connection
@@ -150,15 +117,13 @@ if form.getvalue("newUser")=="False":
 #Coming from signup.html########################################################################
 elif form.getvalue("newUser")=="True":
 
-
-
     #Insert into Users Table
     try:
         query = "SELECT Username FROM USERS WHERE Username=%s;"
         cursor.execute(query,(form.getvalue("Username"),))
         results = cursor.fetchall()
 
-        #Verify no existing user with the same username exists
+        #Verify no existing user with the same Username exists
         if results != []:
             #Username taken
             session.end(SDict)
