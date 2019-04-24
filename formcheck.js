@@ -26,7 +26,7 @@ var why = "";
 
 if(theform.CaptchaInput.value == ""){
 why += "- Please Enter CAPTCHA Code.\n";
-window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
+//window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
 
 }
 // print the error message if no value is entered
@@ -50,6 +50,8 @@ if(why == ""){
 function ValidCaptcha(){
 var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
 var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
+console.log(str1);
+console.log(str2);
 if (str1 == str2){
 return true;
 // if strings don't match reload the login page with invalid credentials
