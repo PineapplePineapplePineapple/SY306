@@ -20,7 +20,7 @@ if (performance.navigation.type == 1) {
   }
 }
 
-
+// function that validates the entered CAPTCHA code, reloads the login page if there's an error
 function checkform(theform){
 var why = "";
 
@@ -29,6 +29,7 @@ why += "- Please Enter CAPTCHA Code.\n";
 window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
 
 }
+// print the error message if no value is entered
 if(theform.CaptchaInput.value != ""){
 if(ValidCaptcha(theform.CaptchaInput.value) == false){
 why += "- The CAPTCHA Code Does Not Match.\n";
@@ -48,6 +49,7 @@ var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
 var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
 if (str1 == str2){
 return true;
+// if strings don't match reload the login page with invalid credentials
 }else{
 window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
 return false;
@@ -73,6 +75,7 @@ function validateForm() {
     document.getElementById('fl_name_errors').innerHTML="Maximum of 50 characters for name";
     return false;
   }
+  // special character checking
   var x = document.forms["signupform"]["fl_name"].value;
   if (/[!@#$%^&*(),.?":{}|<>]/g.test(x) == true) {
     document.getElementById('fl_name_errors').innerHTML='These characters are not allowed: !@#$%^&*(),.?":{}|<>';
@@ -89,6 +92,7 @@ function validateForm() {
     document.getElementById('usernameerrors').innerHTML="Maxiumum of 30 characters for username";
     return false;
   }
+  // special character checking
   var x = document.forms["signupform"]["username"].value;
   if (/[!@#$%^&*(),.?":{}|<>]/g.test(x) == true) {
     document.getElementById('usernameerrors').innerHTML='These characters are not allowed: !@#$%^&*(),.?":{}|<>';
@@ -110,6 +114,7 @@ function validateForm() {
     document.getElementById('pswderrors').innerHTML="Password must contain at least 1 number";
     return false;
   }
+  // special character checking
   var x = document.forms["signupform"]["pswd"].value;
   if (/[!@#$%^&*(),.?":{}|<>]/g.test(x) == true) {
     document.getElementById('pswderrors').innerHTML='These characters are not allowed: !@#$%^&*(),.?":{}|<>';
@@ -130,6 +135,7 @@ function validateForm_login() {
     document.getElementById('usernameerrors').innerHTML="Maxiumum of 30 characters for username";
     return false;
   }
+  // special character checking
   var x = document.forms["signupform"]["username"].value;
   if (/[!@#$%^&*(),.?":{}|<>]/g.test(x) == true) {
     document.getElementById('usernameerrors').innerHTML='These characters are not allowed: !@#$%^&*(),.?":{}|<>';
@@ -146,6 +152,7 @@ function validateForm_login() {
     document.getElementById('pswderrors').innerHTML="Maxiumum of 30 characters for password";
     return false;
   }
+  // special character checking
   var x = document.forms["signupform"]["pswd"].value;
   if (/[!@#$%^&*(),.?":{}|<>]/g.test(x) == true) {
     document.getElementById('pswderrors').innerHTML='These characters are not allowed: !@#$%^&*(),.?":{}|<>';
@@ -156,6 +163,7 @@ function validateForm_login() {
 // function for validating just the first/last name textbox onblur
 // and that it gets filled in correctly
 function validate_fl_name() {
+  // special character checking
   var x = document.forms["signupform"]["fl_name"].value;
   if (/[!@#$%^&*(),.?":{}|<>]/g.test(x) == true) {
     document.getElementById('fl_name_errors').innerHTML='These characters are not allowed: !@#$%^&*(),.?":{}|<>';
@@ -210,6 +218,7 @@ function validateUsername() {
 // function for validating just the password textbox onblur
 // and that it gets filled in correctly
 function validatePswd() {
+  // special character checking
   var x = document.forms["signupform"]["pswd"].value;
   if (/[!@#$%^&*(),.?":{}|<>]/g.test(x) == true) {
     document.getElementById('pswderrors').innerHTML='These characters are not allowed: !@#$%^&*(),.?":{}|<>';
@@ -240,6 +249,7 @@ function validatePswd() {
 
 // function for validating the password textbox on the login page
 function validatePswd_login() {
+  // special character checking
   var x = document.forms["signupform"]["pswd"].value;
   if (/[!@#$%^&*(),.?":{}|<>]/g.test(x) == true) {
     document.getElementById('pswderrors').innerHTML='These characters are not allowed: !@#$%^&*(),.?":{}|<>';
