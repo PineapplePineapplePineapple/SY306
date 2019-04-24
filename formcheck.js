@@ -36,7 +36,7 @@ why += "- The CAPTCHA Code Does Not Match.\n";
 }
 }
 if(why != ""){
-//alert(why);
+alert(why);
 window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
 return false;
 }
@@ -51,7 +51,7 @@ if (str1 == str2){
 return true;
 // if strings don't match reload the login page with invalid credentials
 }else{
-window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
+//window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
 return false;
 }
 }
