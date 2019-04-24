@@ -31,7 +31,7 @@ why += "- Please Enter CAPTCHA Code.\n";
 }
 // print the error message if no value is entered
 if(theform.CaptchaInput.value != ""){
-if(ValidCaptcha(theform.CaptchaInput.value) == false){
+if(ValidCaptcha() == false){
 why += "- The CAPTCHA Code Does Not Match.\n";
 }
 }
