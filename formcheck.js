@@ -34,7 +34,6 @@ var why = "";
 // }
 if(document.forms[theform]["CaptchaInput"].value == ""){
 why += "- Please Enter CAPTCHA Code.\n";
-
 }
 
 // if(theform.CaptchaInput.value != ""){
