@@ -27,7 +27,6 @@ var why = "";
 if(theform.CaptchaInput.value == ""){
 why += "- Please Enter CAPTCHA Code.\n";
 //window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
-
 }
 // print the error message if no value is entered
 if(theform.CaptchaInput.value != ""){
