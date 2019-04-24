@@ -76,6 +76,11 @@ except mysql.connector.Error as err:
 cursor = conn.cursor() #Create cursor used to run queries
 
 
+if (form.getvalue("Username")==None):
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+if (form.getvalue("Password")==None):
+    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+
 
 #CGI START
 
