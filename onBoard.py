@@ -77,9 +77,9 @@ cursor = conn.cursor() #Create cursor used to run queries
 
 
 if (form.getvalue("Username")==None):
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+    print("Location: http://midn.cyber.usna.edu/~m202556/project03/login.html\n")
 if (form.getvalue("Password")==None):
-    print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+    print("Location: http://midn.cyber.usna.edu/~m202556/project03/login.html\n")
 
 
 #CGI START
@@ -101,16 +101,16 @@ if form.getvalue("newUser")=="False":
             session.end(SDict)
             #Direct user to the message board
             if results[0][3]=="admin":
-                print("Location: http://midn.cyber.usna.edu/~m202556/project02/admin/admin.html\n")
+                print("Location: http://midn.cyber.usna.edu/~m202556/project03/admin/admin.html\n")
             else:
-                print("Location: http://midn.cyber.usna.edu/~m202556/project02/messagePost.py\n")
+                print("Location: http://midn.cyber.usna.edu/~m202556/project03/messagePost.py\n")
 
         #Failed login flow
         else:
 
             session.end(SDict)
             #refreshed the login page, and triggers the 'invalid credentials' error message
-            print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+            print("Location: http://midn.cyber.usna.edu/~m202556/project03/login.html\n")
 
     except mysql.connector.Error as err:
         print ('<p style = "color:red">')
@@ -132,7 +132,7 @@ elif form.getvalue("newUser")=="True":
         if results != []:
             #Username taken
             session.end(SDict)
-            print("Location: http://midn.cyber.usna.edu/~m202556/project02/signup.html\n")
+            print("Location: http://midn.cyber.usna.edu/~m202556/project03/signup.html\n")
 
         #Create user if no such prexisting user exists
         else:
@@ -141,7 +141,7 @@ elif form.getvalue("newUser")=="True":
             pDigest=hashlib.sha256((form.getvalue("Password")+form.getvalue("Username")).encode("utf-8")).hexdigest()
             cursor.execute(query,(html_escape(form.getvalue("Username")),html_escape(form.getvalue("Name")),pDigest))
             #Direct the user to login
-            print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+            print("Location: http://midn.cyber.usna.edu/~m202556/project03/login.html\n")
 
             cursor.close() # close cursor when no longer needed to access database
 
@@ -168,7 +168,7 @@ elif form.getvalue("newUser")=="True":
 #Access CGI directly###################################################################################
 else:
       session.end(SDict)
-      print("Location: http://midn.cyber.usna.edu/~m202556/project02/login.html\n")
+      print("Location: http://midn.cyber.usna.edu/~m202556/project03/login.html\n")
 
 print ('</body></html>')
 #######################################################################################################

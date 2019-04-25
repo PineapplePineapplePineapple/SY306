@@ -10,12 +10,12 @@ if (performance.navigation.type == 1) {
   // see which URL the user just came from
   var oldURL = document.referrer;
   // the user came from signup.html and is currently in signup.html it means the username is already being used so print out an alert that the username already exists
-  if (oldURL == "http://midn.cyber.usna.edu/~m202556/project02/signup.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project02/signup.html") {
+  if (oldURL == "http://midn.cyber.usna.edu/~m202556/project03/signup.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project03/signup.html") {
     alert("Username already exists");
     document.getElementById('usernameerrors').innerHTML="Username exists";
   }
   // if the user came from login.html and is currently in login.html that means the login credentials were invalid so send an alert saying they were invalid
-  if (oldURL == "http://midn.cyber.usna.edu/~m202556/project02/login.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project02/login.html") {
+  if (oldURL == "http://midn.cyber.usna.edu/~m202556/project03/login.html" && document.location=="http://midn.cyber.usna.edu/~m202556/project03/login.html") {
     alert("Failed logon attempt");
   }
 }
@@ -36,7 +36,7 @@ why += "- The CAPTCHA Code Does Not Match.\n";
 
 if(why != ""){
 alert(why);
-window.location.replace("http://midn.cyber.usna.edu/~m202556/project02/login.html")
+window.location.replace("http://midn.cyber.usna.edu/~m202556/project03/login.html")
 return false;
 }
 else{

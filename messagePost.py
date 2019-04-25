@@ -45,7 +45,7 @@ except mysql.connector.Error as err:
   <html>
   <head>
   <meta charset = "utf-8">
-  <title>DB connection with Python</title>
+  <title>Message Board</title>
   <style type = "text/css">
   table, td, th {border:1px solid black}
   </style>
